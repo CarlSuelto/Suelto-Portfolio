@@ -1,0 +1,1 @@
+{"root":["./src/hooks/usefetchprojects.js","./src/services/supabaseclient.js","./src/app.jsx","./src/main.jsx","./src/components/footer.jsx","./src/components/navbar.jsx","./src/components/projectcard.jsx","./src/pages/about.jsx","./src/pages/contact.jsx","./src/pages/home.jsx","./src/pages/projects.jsx"],"version":"6.0.3"}

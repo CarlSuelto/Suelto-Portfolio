@@ -13,7 +13,7 @@ const Projects = () => {
       id: 'ach-1',
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
-      date: 'Certified',
+      date: 'Certified - 2025',
       image: '/Responsive web.png',
       description: 'This course teaches the fundamentals of HTML and CSS, including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages'
     },
@@ -21,18 +21,18 @@ const Projects = () => {
       id: 'ach-2',
       title: 'Computer Systems Servicing NCII',
       issuer: 'CSS NCII',
-      date: 'Completed',
+      date: 'Completed - 2026',
       image: '/NCII CSS.png',
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
-    }
+    },
     {
       id: 'ach-3',
       title: 'Events Management Servicing NCIII',
-      issuer: 'EMS NCII',
-      date: 'Completed',
+      issuer: 'EMS NCIII',
+      date: 'Completed - 2025',
       image: '/NCIII EMS.png',
       description: 'Demonstrated 4 core competencies in event planning, logistics coordination, and client communication for successful event execution.'
-    }
+    },
   ];
 
   return (
