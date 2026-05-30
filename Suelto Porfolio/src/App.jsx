@@ -17,7 +17,7 @@ function App() {
         <Contact />
       </main>
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Alex Doe. Built with React & Supabase.</p>
+        <p>&copy; {new Date().getFullYear()} Carl Suelto. Built with React & Supabase.</p>
       </footer>
     </div>
   );
