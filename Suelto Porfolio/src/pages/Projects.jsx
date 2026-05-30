@@ -20,7 +20,7 @@ const Projects = () => {
     {
       id: 'ach-2',
       title: 'Computer Systems Servicing NCII',
-      issuer: 'Online Verification',
+      issuer: 'CSS NCII',
       date: 'Completed',
       image: '/NCII CSS.png',
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
