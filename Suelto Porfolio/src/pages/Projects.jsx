@@ -19,17 +19,17 @@ const Projects = () => {
     },
     {
       id: 'ach-2',
-      title: 'Computer Systems Servicing NCII',
-      issuer: 'CSS NCII',
+      title: 'Computer Systems Servicing NC II',
+      issuer: 'CSS NC II',
       date: 'Completed - 2026',
       image: '/NCII CSS.png',
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
       id: 'ach-3',
-      title: 'Events Management Servicing NCIII',
-      issuer: 'EMS NCIII',
-      date: 'Completed - 2025',
+      title: 'Events Management Services NC III',
+      issuer: 'EMS NC III',
+      date: 'Completed - 2024',
       image: '/NCIII EMS.png',
       description: 'Demonstrated 4 core competencies in event planning, logistics coordination, and client communication for successful event execution.'
     },

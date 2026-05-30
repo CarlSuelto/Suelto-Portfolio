@@ -1,20 +1,49 @@
 import React, { useState } from 'react';
+// Import your central Supabase client instance
+import { supabase } from '../services/supabaseClient'; 
 
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  
+  /* --- Upgraded UI Interaction States --- */
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && email && message) {
-      // Handle your Supabase table insert or edge function hook here
-      console.log('Dispatching message payload:', { name, email, message });
-      setSubmitted(true);
-      setName('');
-      setEmail('');
-      setMessage('');
+    setErrorMessage('');
+    
+    if (name.trim() && email.trim() && message.trim()) {
+      setLoading(true);
+      
+      try {
+        /* 🚀 CONNECTED: Inserting the form payload straight into your database */
+        const { error } = await supabase
+          .from('contact_messages')
+          .insert([
+            { 
+              name: name.trim(), 
+              email: email.trim(), 
+              message: message.trim() 
+            }
+          ]);
+
+        if (error) throw error;
+
+        // Transmission successful: reset states
+        setSubmitted(true);
+        setName('');
+        setEmail('');
+        setMessage('');
+      } catch (error) {
+        console.error('Database insertion breakdown:', error.message);
+        setErrorMessage(error.message || 'Transmission failed. Pipeline connection lost.');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -47,6 +76,13 @@ const Contact = () => {
           <div className="supabase-card contact-form-card">
             <form onSubmit={handleSubmit} className="contact-form">
               
+              {/* Optional Error Warning Banner if the API stream encounters an error */}
+              {errorMessage && (
+                <div className="supabase-error-banner" style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '12px', borderRadius: '6px', marginBottom: '1.5rem', fontSize: '0.9rem', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+                  ⚠️ {errorMessage}
+                </div>
+              )}
+
               <div className="form-group">
                 <label htmlFor="form-name">Full Name</label>
                 <input 
@@ -55,6 +91,7 @@ const Contact = () => {
                   placeholder="Carl Vincent" 
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  disabled={loading}
                   required 
                 />
               </div>
@@ -67,6 +104,7 @@ const Contact = () => {
                   placeholder="your.email@example.com" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
                   required 
                 />
               </div>
@@ -79,15 +117,23 @@ const Contact = () => {
                   rows="5" 
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  disabled={loading}
                   required
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-primary-supabase form-submit-btn">
-                <span>Dispatch Message</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="16" height="16">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                </svg>
+              {/* Upgraded Button State: Shows a dynamic loading indicator during transit */}
+              <button 
+                type="submit" 
+                className={`btn-primary-supabase form-submit-btn ${loading ? 'loading' : ''}`}
+                disabled={loading}
+              >
+                <span>{loading ? 'Writing to database...' : 'Dispatch Message'}</span>
+                {!loading && (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="16" height="16">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                  </svg>
+                )}
               </button>
             </form>
           </div>
