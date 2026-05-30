@@ -33,6 +33,14 @@ const Projects = () => {
       image: '/NCIII EMS.png',
       description: 'Demonstrated 4 core competencies in event planning, logistics coordination, and client communication for successful event execution.'
     },
+     {
+      id: 'ach-4',
+      title: 'OOPs in Java Programming Certification',
+      issuer: 'OBJECTIVE PROGRAMMING',
+      date: 'Completed - Nov 2025',
+      image: '/OBJ Pro.png',
+      description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
+    },
   ];
 
   return (
