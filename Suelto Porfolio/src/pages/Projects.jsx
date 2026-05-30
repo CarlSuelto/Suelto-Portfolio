@@ -1,25 +1,122 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
 
 const Projects = () => {
   const { projects, loading, error } = useFetchProjects();
+  const [activeTab, setActiveTab] = useState('all'); // 'all', 'projects', 'achievements'
+
+  // Hardcoded achievements data array following your profile's data structures
+  const achievements = [
+    {
+      id: 'ach-1',
+      title: 'Computer Systems Servicing (CSS) NCII',
+      issuer: 'TESDA',
+      date: 'Certified',
+      description: 'Demonstrated core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
+    },
+    {
+      id: 'ach-2',
+      title: 'Information Technology Leadership Award',
+      issuer: 'Asian College Student Council',
+      date: '2025',
+      description: 'Recognized for excellent technical management and team collaboration within software architectural development labs.'
+    },
+    {
+      id: 'ach-3',
+      title: 'Full-Stack Web Development Boot Camp',
+      issuer: 'Online Verification',
+      date: 'Completed',
+      description: 'Mastered production-ready database modeling alongside modern JavaScript frontend framework engineering pipelines.'
+    }
+  ];
 
   return (
     <section id="projects" className="projects-section">
-      <h2>My Projects</h2>
-      <p className="section-subtitle">Real-time dynamic data pulled from Supabase backend.</p>
+      <div className="section-header-block">
+        <h2>Portfolio & Milestones</h2>
+        <p className="section-subtitle">Real-time dynamic data pulled from Supabase backend alongside verified credentials.</p>
+      </div>
 
-      {loading && <div className="loader">Loading dynamic portfolio items...</div>}
-      {error && <div className="error-msg">Error loading projects: {error}</div>}
+      {/* Control Tabs to filter view states */}
+      <div className="portfolio-tab-row">
+        <button 
+          className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`}
+          onClick={() => setActiveTab('all')}
+        >
+          Show All
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`}
+          onClick={() => setActiveTab('projects')}
+        >
+          Projects ({projects ? projects.length : 0})
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`}
+          onClick={() => setActiveTab('achievements')}
+        >
+          Achievements ({achievements.length})
+        </button>
+      </div>
 
-      {!loading && !error && (
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+      {/* PROJECT LOADING/ERROR HANDLERS */}
+      {(activeTab === 'all' || activeTab === 'projects') && loading && (
+        <div className="loader">Loading dynamic portfolio items...</div>
       )}
+      {(activeTab === 'all' || activeTab === 'projects') && error && (
+        <div className="error-msg">Error loading projects: {error}</div>
+      )}
+
+      {/* SYSTEM GRID DISPLAY */}
+      <div className="portfolio-master-layout-grid">
+        
+        {/* Dynamic Project Streams */}
+        {(activeTab === 'all' || activeTab === 'projects') && !loading && !error && (
+          <div className="projects-sub-column">
+            {activeTab === 'all' && <h3>Featured Builds</h3>}
+            <div className="projects-grid">
+              {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Structured Achievement Grid Boxes */}
+        {(activeTab === 'all' || activeTab === 'achievements') && (
+          <div className="achievements-sub-column">
+            {activeTab === 'all' && <h3>Academic & Technical Milestones</h3>}
+            <div className="achievements-box-grid">
+              {achievements.map((item) => (
+                <div key={item.id} className="supabase-card achievement-item-card">
+                  <div className="achievement-badge-row">
+                    <span className="badge-issuer">{item.issuer}</span>
+                    <span className="badge-date">{item.date}</span>
+                  </div>
+                  {/**/}
+                  <div className="achievement-image-wrapper">
+                    <img 
+                      src={item.image || 'Responsive web.png'} 
+                      alt={item.title} 
+                      className="achievement-card-img" 
+                    />
+                  </div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                  <div className="achievement-status-footer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>System Verified</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+      </div>
     </section>
   );
 };
