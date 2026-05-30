@@ -698,3 +698,36 @@ code {
     text-align: center;
   }
 }
+/* Container box that clips and houses the certificate preview image */
+.achievement-image-wrapper {
+  width: 100%;
+  height: 160px;                 /* Fixed height for the image banner block */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1e;     /* Fallback dark tint */
+  border-bottom: 1px solid var(--border); /* Clean separator line under the picture */
+  
+  /* Crucial changes to make the image fit edge-to-edge: */
+  margin: 16px 0;                /* Vertical spacing inside the card */
+  overflow: hidden;              /* Clips the image edges cleanly at the border-radius */
+  border-radius: 6px;            /* Matches the rounded corners of your UI layout */
+}
+
+/* Forces your local PNG asset to completely fill out the container dimensions */
+.achievement-card-img {
+  width: 100%;
+  height: 100%;
+  
+  /* Crucial change: 'cover' scales the image up so there are zero black bars or gaps */
+  object-fit: cover;             
+  object-position: center top;   /* Ensures the top/center of the certificate is favored when cropped */
+  padding: 0;                    /* Removed padding so it stretches edge-to-edge */
+  
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Optional: Smooth hover micro-interaction */
+.achievement-item-card:hover .achievement-card-img {
+  transform: scale(1.05);        /* Slight lens zoom when hovering over the card wrapper */
+}

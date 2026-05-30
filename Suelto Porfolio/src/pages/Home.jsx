@@ -4,10 +4,10 @@ import heroImg from '../assets/CarlSuelto.png';
 
 const Home = () => {
   const phrases = [
-    "A DIT student at Asian College.",
-    "A passionate Web Developer.",
-    "A Creative UI/UX Designer.",
-    "An NCII Computer Systems Servicing (CSS) holder."
+    "a DIT student at Asian College.",
+    "a NC-III Events Management Servicing (EMS) holder.",
+    "a passionate Web Developer and Designer.",
+    "a NC-II Computer Systems Servicing (CSS) holder."
   ];
 
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -52,7 +52,7 @@ const Home = () => {
           <h1 className="hero-title">
             Hello there, <span className="highlight">Carl Vincent</span> here.
           </h1>
-          <h2 className="hero-subtitle"> a Student</h2>
+          <h2 className="hero-subtitle"> a Diploma Student</h2>
           
           <p className="typewriter-paragraph">
             I am <span className="typed-text">{displayedText}</span>
@@ -61,7 +61,7 @@ const Home = () => {
 
           <div className="hero-actions">
             <a href="#projects" className="btn-primary-supabase">
-              View My Work
+              Check My Work
             </a>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
 
+
 const Projects = () => {
   const { projects, loading, error } = useFetchProjects();
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'projects', 'achievements'
@@ -10,24 +11,18 @@ const Projects = () => {
   const achievements = [
     {
       id: 'ach-1',
-      title: 'Computer Systems Servicing (CSS) NCII',
-      issuer: 'TESDA',
+      title: 'Responsive Web Design Certification',
+      issuer: 'FREECODECAMP',
       date: 'Certified',
-      description: 'Demonstrated core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
+      description: 'This course teaches the fundamentals of HTML and CSS, including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages'
     },
     {
       id: 'ach-2',
-      title: 'Information Technology Leadership Award',
-      issuer: 'Asian College Student Council',
-      date: '2025',
-      description: 'Recognized for excellent technical management and team collaboration within software architectural development labs.'
-    },
-    {
-      id: 'ach-3',
-      title: 'Full-Stack Web Development Boot Camp',
+      title: 'Computer Systems Servicing NCII',
       issuer: 'Online Verification',
       date: 'Completed',
-      description: 'Mastered production-ready database modeling alongside modern JavaScript frontend framework engineering pipelines.'
+      image: new URL('../assets/NCII CSS.png', import.meta.url).href,
+      description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     }
   ];
 
@@ -97,9 +92,11 @@ const Projects = () => {
                   {/**/}
                   <div className="achievement-image-wrapper">
                     <img 
-                      src={item.image || 'Responsive web.png'} 
+                      src={item.image || new URL('../assets/Responsive web.png', import.meta.url).href}
                       alt={item.title} 
                       className="achievement-card-img" 
+                      loading="lazy"
+                      onError={(e) => { e.target.style.display = 'none'; }}
                     />
                   </div>
                   <h4>{item.title}</h4>
