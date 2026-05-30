@@ -14,6 +14,7 @@ const Projects = () => {
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified',
+      image: new URL('../assets/Responsive web.png', import.meta.url).href,
       description: 'This course teaches the fundamentals of HTML and CSS, including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages'
     },
     {
@@ -92,7 +93,7 @@ const Projects = () => {
                   {/**/}
                   <div className="achievement-image-wrapper">
                     <img 
-                      src={item.image || new URL('../assets/Responsive web.png', import.meta.url).href}
+                      src={item.image || '/Responsive web.png'}
                       alt={item.title} 
                       className="achievement-card-img" 
                       loading="lazy"
