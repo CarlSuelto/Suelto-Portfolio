@@ -1,12 +1,31 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM VARIABLES (Supabase Studio Palette)
+   ========================================================================== */
 :root {
-  --bg-primary: #121214;
-  --bg-secondary: #1a1a1e;
-  --accent: #64ffda;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --card-bg: #222226;
+  --bg: #121214;                  /* Deep charcoal dashboard background */
+  --bg-secondary: #1a1a1e;        /* Lighter container background */
+  --bg-dots: #222226;             /* Grid dot texture accent color */
+  --card-bg: #222226;             /* Base project card background */
+  --border: #2e2e2e;              /* Precision split layout border lines */
+  
+  --text-h: #f3f4f6;              /* Bright headers */
+  --text: #9ca3af;                /* Muted paragraphs */
+  --accent: #3ecf8e;              /* Signature Supabase Emerald Green */
+  
+  --accent-bg: rgba(62, 207, 142, 0.08);
+  --accent-border: rgba(62, 207, 142, 0.3);
+  --glow: rgba(62, 207, 142, 0.15);
+
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 16px/1.6 var(--sans);
+  color-scheme: dark;
 }
 
+/* ==========================================================================
+   2. GLOBAL RESET & LAYOUT BASE
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,59 +34,140 @@
 }
 
 body {
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-main);
-  line-height: 1.6;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--bg-dots) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Navbar Style */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  padding: 8rem 10% 4rem 10%;
+  min-height: 80vh;
+}
+
+/* Typography Extensions */
+h1, h2, h3, h4 {
+  color: var(--text-h);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.highlight { 
+  color: var(--accent); 
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 2px 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   3. NAVIGATION BAR (Fixed Studio Layout)
+   ========================================================================== */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 10%;
-  background: rgba(18, 18, 20, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(18, 18, 20, 0.8);
+  backdrop-filter: blur(12px);
   position: fixed;
   top: 0;
-  width: 65%;
+  left: 0;
+  width: 100%;
   z-index: 100;
+  border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
-.nav-links { display: flex; list-style: none; gap: 2rem; }
-.nav-links a { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
-.nav-links a:hover { color: var(--accent); }
 
-/* Layout Sections */
-section {
-  padding: 6rem 10% 4rem 10%;
-  min-height: 80vh;
+.nav-logo { 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--accent); 
+  text-decoration: none;
 }
-.hero-section {
+
+.nav-links { 
+  display: flex; 
+  list-style: none; 
+  gap: 2rem; 
+}
+
+.nav-links a { 
+  color: var(--text); 
+  text-decoration: none; 
+  font-size: 0.95rem;
+  transition: color 0.2s ease; 
+}
+
+.nav-links a:hover { 
+  color: var(--accent); 
+}
+
+/* ==========================================================================
+   4. FULL-SCREEN HERO SECTION
+   ========================================================================== */
+.hero-section-fullscreen {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-}
-.highlight { color: var(--accent); }
-.btn-primary, .btn-submit {
-  display: inline-block;
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-  padding: 0.75rem 1.5rem;
-  margin-top: 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.btn-primary:hover, .btn-submit:hover {
-  background: rgba(100, 255, 218, 0.1);
+  padding: 0 10%;
 }
 
-/* Grids and Responsive Layouts */
+.hero-center-content {
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 56px;
+  letter-spacing: -1.8px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  color: var(--text);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.typewriter-paragraph {
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  min-height: 32px;
+  margin-bottom: 40px;
+}
+
+.cursor {
+  color: var(--accent);
+  font-weight: bold;
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* ==========================================================================
+   5. COMPONENT SHAPES (Cards, Buttons, Grids)
+   ========================================================================== */
 .about-grid, .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -75,20 +175,166 @@ section {
   margin-top: 2rem;
 }
 
-/* Project Cards */
-.project-card {
+/* Reusable Supabase Component Box Layout */
+.supabase-card {
   background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #333;
+  padding: 24px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
-.project-info { padding: 1.5rem; }
-.tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-.tag { background: #333; color: var(--accent); font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; }
-.btn-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
 
-/* Forms */
+.supabase-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+/* Interactive Action Buttons */
+.btn-primary-supabase, .btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-supabase:hover, .btn-submit:hover {
+  background: var(--accent-bg);
+  box-shadow: 0 0 25px var(--glow);
+  transform: translateY(-1px);
+}
+
+/* Project Specific Cards Extension */
+.project-card {
+  composes: supabase-card; /* Concept inheritance */
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-card img { 
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+}
+
+.project-info { 
+  padding: 1.5rem; 
+}
+
+.tech-tags { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 0.5rem; 
+  margin: 1rem 0; 
+}
+
+.btn-link { 
+  color: var(--accent); 
+  text-decoration: none; 
+  font-size: 0.9rem; 
+}
+
+/* ==========================================================================
+   6. ABOUT ME & SOCIAL BENTO GRID BOXES
+   ========================================================================== */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
+}
+
+.about-header {
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 16px;
+}
+
+.section-subtitle {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Social Media Integrations Rows */
+.social-section-wrapper {
+  margin-top: 24px;
+}
+
+.social-title {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.social-item-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 16px 20px;
+  height: 110px;
+}
+
+.social-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icon-wrapper h4 {
+  font-size: 1.1rem;
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-handle {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+/* Socials States Mapping Trigger */
+.social-item-box:hover .button-icon {
+  transform: scale(1.15) rotate(4deg);
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   7. INPUT FORMS & FOOTER ARCHITECTURE
+   ========================================================================== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -96,19 +342,55 @@ section {
   margin: 2rem auto 0 auto;
   gap: 1rem;
 }
+
 .contact-form input, .contact-form textarea {
   background: var(--bg-secondary);
-  border: 1px solid #444;
-  color: #fff;
+  border: 1px solid var(--border);
+  color: var(--text-h);
   padding: 1rem;
   border-radius: 4px;
+  font-family: var(--sans);
+  transition: border-color 0.2s ease;
 }
 
-.footer { text-align: center; padding: 2rem; background: var(--bg-secondary); color: var(--text-muted); }
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
 
-/* Mobile Responsiveness Rules */
+.footer { 
+  text-align: center; 
+  padding: 2.5rem; 
+  background: var(--bg-secondary); 
+  border-top: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   8. CONSOLIDATED ANIMATION MECHANISMS & RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: var(--accent); }
+}
+
 @media (max-width: 768px) {
-  .navbar { padding: 1rem 5%; }
-  .nav-links { display: none; } /* Simplicity rule for responsive presentation layer */
-  section { padding: 5rem 5% 2rem 5%; }
+  section { 
+    padding: 6rem 5% 2rem 5%; 
+  }
+  .navbar { 
+    padding: 1rem 5%; 
+  }
+  .nav-links { 
+    display: none;              /* Simple responsive presentation collapse */
+  }
+  .hero-title {
+    font-size: 38px;
+    letter-spacing: -1px;
+  }
+  .hero-subtitle {
+    font-size: 20px;
+  }
+  .hero-section-fullscreen {
+    padding: 0 5%;
+  }
 }

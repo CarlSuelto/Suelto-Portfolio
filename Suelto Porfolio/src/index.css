@@ -33,7 +33,31 @@
     font-size: 15px;
   }
 }
+/* Typewriter Section Layout */
+.typewriter-paragraph {
+  font-family: var(--mono); /* Code font style */
+  font-size: 1.2rem;
+  margin: 24px 0;
+  min-height: 40px; /* Prevents layout shifting/jumping when text is deleted */
+}
 
+.typed-text {
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+/* Constant blinking vertical cursor code style */
+.cursor {
+  color: var(--accent); /* Supabase green cursor color */
+  font-weight: bold;
+  margin-left: 2px;
+  animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  from, to { color: transparent }
+  50% { color: var(--accent); }
+}
 @media (prefers-color-scheme: dark) {
   :root {
     /* --- Supabase UI Studio Dark Theme Palette --- */
