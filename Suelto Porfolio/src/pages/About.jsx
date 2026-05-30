@@ -1,7 +1,6 @@
 import React from 'react';
 
 const About = () => {
-  // Array of socials with custom inline SVG icons matching Supabase's sharp monochrome dashboard style
   const socialLinks = [
     { 
       name: 'GitHub', 
@@ -35,14 +34,24 @@ const About = () => {
     },
     { 
       name: 'Email', 
-      url: 'mailto:your.email@example.com', 
-      handle: 'Contact Me',
+      url: 'https://mail.google.com/mail/u/0/?ogbl#inbox?compose=new', 
+      handle: 'cbsuelto.student@asiancollege.edu.ph',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="24" height="24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
         </svg>
       )
-    }
+    },
+   { 
+    name: 'TikTok', 
+    url: 'https://www.tiktok.com/@cloudy_ceeh26', 
+    handle: '@cloudy_ceeh26', 
+    icon: (
+      <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.6 4.17 1.12 1.25 2.7 2.06 4.34 2.27v3.91c-1.28-.01-2.54-.3-3.7-.85-.85-.41-1.62-.97-2.24-1.66v6.23c.02 2.44-.9 4.85-2.6 6.56-1.92 1.93-4.66 2.9-7.39 2.54-2.22-.28-4.29-1.51-5.59-3.35C-.26 17.65-.4 14.8.46 12.3c.7-2.03 2.37-3.69 4.43-4.35 1.24-.4 2.56-.44 3.82-.13v3.98c-.8-.26-1.68-.2-2.43.16-.92.42-1.63 1.23-1.91 2.22-.38 1.3.1 2.74 1.15 3.52.92.7 2.14.86 3.2.43 1.01-.39 1.68-1.4 1.71-2.48V.02z"/>
+      </svg>
+    )
+  }
   ];
 
   return (
@@ -52,6 +61,7 @@ const About = () => {
         <p className="section-subtitle">DIT Student & Web Developer</p>
       </div>
 
+      {/* Row 1: Bio & Skills */}
       <div className="about-grid">
         <div className="supabase-card bio-box">
           <h3>My Mission</h3>
@@ -70,6 +80,39 @@ const About = () => {
         </div>
       </div>
 
+      {/* NEW Row 2: Metrics and Academic Background Info Boxes */}
+      <div className="about-grid secondary-info-grid">
+        {/* Box A: Highlight metrics tracking dashboard stats */}
+        <div className="supabase-card metrics-box">
+          <h3>Quick Overview</h3>
+          <div className="metrics-display-container">
+            <div className="metric-item">
+              <span className="metric-number">DIT</span>
+              <span className="metric-label"> Information Tech Degree</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-number">10+</span>
+              <span className="metric-label">Projects Completed</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Box B: Timeline detailing location, education or interests */}
+        <div className="supabase-card background-box">
+          <h3>Academic & Foundation</h3>
+          <div className="timeline-stack">
+            <div className="timeline-node">
+              <div className="node-header">
+                <h4>Asian College</h4>
+                <span className="node-badge">Current</span>
+              </div>
+              <p className="node-desc">Department of Information Technology — pursuing modern computing systems architecture, databases, and structural coding practices.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Row 3: Social Media Integrations */}
       <div className="social-section-wrapper">
         <h3 className="social-title">Connect With Me</h3>
         <div className="social-grid" id="social">
@@ -82,7 +125,6 @@ const About = () => {
               className="supabase-card social-item-box"
             >
               <div className="social-icon-wrapper">
-                {/* Custom rendering logic for the native nodes */}
                 <div className="button-icon">{social.icon}</div>
                 <h4>{social.name}</h4>
               </div>
