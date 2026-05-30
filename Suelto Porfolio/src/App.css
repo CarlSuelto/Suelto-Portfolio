@@ -74,9 +74,8 @@ code {
   border-radius: 4px;
   color: var(--accent);
 }
-
 /* ==========================================================================
-   3. NAVIGATION BAR (Fixed Studio Layout)
+   3. NAVIGATION BAR (Fixed Studio Layout with Hover Effects)
    ========================================================================== */
 .navbar {
   display: flex;
@@ -98,23 +97,51 @@ code {
   font-weight: 700; 
   color: var(--accent); 
   text-decoration: none;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+/* Subtle micro-interaction for logo */
+.navbar:hover .nav-logo {
+  transform: scale(1.02);
 }
 
 .nav-links { 
   display: flex; 
   list-style: none; 
-  gap: 2rem; 
+  gap: 2.5rem; /* Slightly widened space for cleaner look */
 }
 
 .nav-links a { 
   color: var(--text); 
   text-decoration: none; 
   font-size: 0.95rem;
-  transition: color 0.2s ease; 
+  font-weight: 500;
+  position: relative; /* Essential for containing the absolute pseudo-element line */
+  padding: 4px 0;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
+/* The Animated Micro-Underline */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px; /* Precision thin razor line */
+  background-color: var(--accent); /* Supabase green color */
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Hover States Trigger --- */
 .nav-links a:hover { 
-  color: var(--accent); 
+  color: var(--text-h); /* Text brightens to clear high-contrast white */
+}
+
+.nav-links a:hover::after {
+  width: 100%;  /* Underline expands to full element width */
+  left: 0;      /* Seamlessly re-aligns anchor point back to left margin */
 }
 
 /* ==========================================================================

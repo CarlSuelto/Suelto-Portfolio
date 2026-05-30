@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const Home = () => {
-  // Array of phrases to loop through dynamically
   const phrases = [
     "A DIT student at Asian College.",
     "A passionate Web Developer.",
     "A Creative UI/UX Designer.",
-    "An NCII holder in Computer Systems Servicing graduate."
+    "An NCII Computer Systems Servicing holder."
   ];
 
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -19,46 +18,47 @@ const Home = () => {
 
     const handleTyping = () => {
       if (!isDeleting) {
-        // Typing Phase: Add one character
         setDisplayedText(currentFullText.substring(0, displayedText.length + 1));
-        setTypingSpeed(100); // Normal typing pace
+        setTypingSpeed(100);
 
-        // If the full phrase is typed out, pause before deleting
         if (displayedText === currentFullText) {
           setIsDeleting(true);
-          setTypingSpeed(2000); // 2-second pause at the end of the sentence
+          setTypingSpeed(2000); 
         }
       } else {
-        // Deleting Phase: Remove one character
         setDisplayedText(currentFullText.substring(0, displayedText.length - 1));
-        setTypingSpeed(50); // Speed up slightly on deletion
+        setTypingSpeed(50);
 
-        // If the phrase is completely cleared, move to the next sentence
         if (displayedText === '') {
           setIsDeleting(false);
           setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-          setTypingSpeed(500); // Brief pause before typing the next phrase
+          setTypingSpeed(500);
         }
       }
     };
 
     const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer); // Cleanup timeout to prevent memory leaks
+    return () => clearTimeout(timer);
   }, [displayedText, isDeleting, currentPhraseIndex]);
 
   return (
-    <section id="home" className="hero-section">
-      <div className="hero-content">
-        <h1>Hello there, <span className="highlight">Carl Vincent</span> here.</h1>
-        <h2>Student</h2>
+    <section id="home" className="hero-section-fullscreen">
+      <div className="hero-center-content">
+        <h1 className="hero-title">
+          Hello there, <span className="highlight">Carl Vincent</span> here.
+        </h1>
+        <h2 className="hero-subtitle">Student</h2>
         
-        {/* Upgraded Dynamic Paragraph */}
         <p className="typewriter-paragraph">
           I am <span className="typed-text">{displayedText}</span>
           <span className="cursor">|</span>
         </p>
 
-        <a href="#projects" className="btn-primary">View My Work</a>
+        <div className="hero-actions">
+          <a href="#projects" className="btn-primary-supabase">
+            View My Work
+          </a>
+        </div>
       </div>
     </section>
   );
