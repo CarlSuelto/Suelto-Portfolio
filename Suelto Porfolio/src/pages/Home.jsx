@@ -6,7 +6,7 @@ const Home = () => {
       <div className="hero-content">
         <h1>Hi, I'm <span className="highlight">Carl Vincent</span></h1>
         <h2>Student</h2>
-        <p>A DIT student at Asian College.</p>
+        <p>A DIT student at Asian College with a passion for web development and design.</p>
         <a href="#projects" className="btn-primary">View My Work</a>
       </div>
     </section>
