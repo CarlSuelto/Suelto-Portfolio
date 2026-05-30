@@ -731,3 +731,55 @@ code {
 .achievement-item-card:hover .achievement-card-img {
   transform: scale(1.05);        /* Slight lens zoom when hovering over the card wrapper */
 }
+-----------------------------------------------------------------------
+/* --- Jumping Letters Layout Container --- */
+.nav-logo.jumping-letters {
+  display: flex;
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--accent); 
+  text-decoration: none;
+  cursor: default;
+}
+
+/* Base style for every letter element */
+.nav-logo.jumping-letters span {
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+/* --- Trigger Continuous Animation Wave on Hover --- */
+.nav-logo.jumping-letters:hover span {
+  color: var(--text-h); /* Flash letters white as they leap */
+  
+  /* 🔄 UPDATED: Added 'infinite' for the loop and 'alternate' for smooth up-and-down motion */
+  animation: letter-leap 0.35s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+/* Stagger the leap timing for each letter to create the infinite wave ripple */
+.nav-logo.jumping-letters span:nth-child(1) { animation-delay: 0.0s; }
+.nav-logo.jumping-letters span:nth-child(2) { animation-delay: 0.08s; }
+.nav-logo.jumping-letters span:nth-child(3) { animation-delay: 0.16s; }
+.nav-logo.jumping-letters span:nth-child(4) { animation-delay: 0.24s; }
+
+/* Keep the green dot grounded, glowing, and stationary */
+.nav-logo.jumping-letters span.dot {
+  color: var(--accent);
+  animation: none !important; /* Excludes the dot from jumping */
+  transition: text-shadow 0.3s ease;
+}
+
+.nav-logo.jumping-letters:hover span.dot {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+}
+
+/* --- The Infinite Leap Physics Animation --- */
+@keyframes letter-leap {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-7px); /* Shoots upward and cleanly reverses because of 'alternate' */
+  }
+}
