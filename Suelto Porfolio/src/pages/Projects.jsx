@@ -14,7 +14,7 @@ const Projects = () => {
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified',
-      image: new URL('../assets/Responsive web.png', import.meta.url).href,
+      image: '/Responsive web.png',
       description: 'This course teaches the fundamentals of HTML and CSS, including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages'
     },
     {
@@ -22,7 +22,7 @@ const Projects = () => {
       title: 'Computer Systems Servicing NCII',
       issuer: 'Online Verification',
       date: 'Completed',
-      image: new URL('../assets/NCII CSS.png', import.meta.url).href,
+      image: '/NCII CSS.png',
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     }
   ];
