@@ -1,0 +1,114 @@
+:root {
+  --bg-primary: #121214;
+  --bg-secondary: #1a1a1e;
+  --accent: #64ffda;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --card-bg: #222226;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Navbar Style */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 10%;
+  background: rgba(18, 18, 20, 0.85);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.nav-logo { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* Layout Sections */
+section {
+  padding: 6rem 10% 4rem 10%;
+  min-height: 80vh;
+}
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.highlight { color: var(--accent); }
+.btn-primary, .btn-submit {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover, .btn-submit:hover {
+  background: rgba(100, 255, 218, 0.1);
+}
+
+/* Grids and Responsive Layouts */
+.about-grid, .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Project Cards */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
+.project-info { padding: 1.5rem; }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+.tag { background: #333; color: var(--accent); font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; }
+.btn-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+
+/* Forms */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  gap: 1rem;
+}
+.contact-form input, .contact-form textarea {
+  background: var(--bg-secondary);
+  border: 1px solid #444;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.footer { text-align: center; padding: 2rem; background: var(--bg-secondary); color: var(--text-muted); }
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+  .navbar { padding: 1rem 5%; }
+  .nav-links { display: none; } /* Simplicity rule for responsive presentation layer */
+  section { padding: 5rem 5% 2rem 5%; }
+}
