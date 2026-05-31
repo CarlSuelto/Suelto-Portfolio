@@ -9,7 +9,7 @@ const Navbar = () => {
   <span>b</span>
   <span>s</span>
   <span>.</span>
-</div>
+      </div>
       <ul className="nav-links">
         <li><a href="#home" className="nav-item">Home</a></li>
         <li><a href="#about" className="nav-item">About</a></li>
