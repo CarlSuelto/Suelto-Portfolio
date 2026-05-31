@@ -1,7 +1,10 @@
 /* ==========================================================================
    1. DESIGN SYSTEM VARIABLES (Supabase Studio Palette)
    ========================================================================== */
-:root {
+html {
+  scroll-behavior: smooth;
+}
+   :root {
   --bg: #121214;                  /* Deep charcoal dashboard background */
   --bg-secondary: #1a1a1e;        /* Lighter container background */
   --bg-dots: #222226;             /* Grid dot texture accent color */
