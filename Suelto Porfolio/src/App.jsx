@@ -5,6 +5,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,12 +17,12 @@ function App() {
         <Projects />
         <Contact />
       </main>
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Carl Suelto. Built with React & Supabase.</p>
-      </footer>
+      
+      {/* 2. FIXED: This now points to your custom component with id="footer"! */}
+      <Footer />
+      
     </div>
   );
 }
-
 
 export default App;
