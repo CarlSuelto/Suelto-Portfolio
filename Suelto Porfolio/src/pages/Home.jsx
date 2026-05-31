@@ -7,7 +7,9 @@ const Home = () => {
     "a DIT student at Asian College.",
     "a NC-III Events Management Servicing (EMS) holder.",
     "a passionate Web Developer and Designer.",
-    "a NC-II Computer Systems Servicing (CSS) holder."
+    "a NC-II Computer Systems Servicing (CSS) holder.",
+    "a Responsive Web Design Certified by FreeCodeCamp.",
+    "an OOPs in Java Programming Certified by Objective Programming."
   ];
 
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);

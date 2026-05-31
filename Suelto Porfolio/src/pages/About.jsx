@@ -42,16 +42,23 @@ const About = () => {
         </svg>
       )
     },
-   { 
-    name: 'TikTok', 
-    url: 'https://www.tiktok.com/@cloudy_ceeh26', 
-    handle: '@cloudy_ceeh26', 
-    icon: (
-      <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.6 4.17 1.12 1.25 2.7 2.06 4.34 2.27v3.91c-1.28-.01-2.54-.3-3.7-.85-.85-.41-1.62-.97-2.24-1.66v6.23c.02 2.44-.9 4.85-2.6 6.56-1.92 1.93-4.66 2.9-7.39 2.54-2.22-.28-4.29-1.51-5.59-3.35C-.26 17.65-.4 14.8.46 12.3c.7-2.03 2.37-3.69 4.43-4.35 1.24-.4 2.56-.44 3.82-.13v3.98c-.8-.26-1.68-.2-2.43.16-.92.42-1.63 1.23-1.91 2.22-.38 1.3.1 2.74 1.15 3.52.92.7 2.14.86 3.2.43 1.01-.39 1.68-1.4 1.71-2.48V.02z"/>
-      </svg>
-    )
-  }
+    { 
+      name: 'TikTok', 
+      url: 'https://www.tiktok.com/@cloudy_ceeh26', 
+      handle: '@cloudy_ceeh26', 
+      icon: (
+        <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.6 4.17 1.12 1.25 2.7 2.06 4.34 2.27v3.91c-1.28-.01-2.54-.3-3.7-.85-.85-.41-1.62-.97-2.24-1.66v6.23c.02 2.44-.9 4.85-2.6 6.56-1.92 1.93-4.66 2.9-7.39 2.54-2.22-.28-4.29-1.51-5.59-3.35C-.26 17.65-.4 14.8.46 12.3c.7-2.03 2.37-3.69 4.43-4.35 1.24-.4 2.56-.44 3.82-.13v3.98c-.8-.26-1.68-.2-2.43.16-.92.42-1.63 1.23-1.91 2.22-.38 1.3.1 2.74 1.15 3.52.92.7 2.14.86 3.2.43 1.01-.39 1.68-1.4 1.71-2.48V.02z"/>
+        </svg>
+      )
+    }
+  ];
+
+  /* 🛠️ NEW: Expanded technology dataset for the marquee carousel track */
+  const techStack = [
+    'React.js', 'JavaScript', 'Supabase', 'PostgreSQL', 
+    'HTML5', 'CSS3', 'Git/GitHub', 'REST APIs', 
+    'Vite', 'Node.js', 'UI/UX Design', 'Responsive Web'
   ];
 
   return (
@@ -80,7 +87,27 @@ const About = () => {
         </div>
       </div>
 
-      {/* NEW Row 2: Metrics and Academic Background Info Boxes */}
+      {/* 🚀 NEW UPGRADE: Infinite Sliding Tech Stack Carousel */}
+      <div className="supabase-card carousel-section-card">
+        <h3>Technical Ecosystem and Skills Set</h3>
+        <div className="tech-carousel-viewport">
+          <div className="tech-carousel-track">
+            {/* Array is mapped twice back-to-back to enable smooth infinite loop transitions */}
+            {techStack.map((tech, i) => (
+              <div key={`track1-${i}`} className="tech-badge">
+                <code>{tech}</code>
+              </div>
+            ))}
+            {techStack.map((tech, i) => (
+              <div key={`track2-${i}`} className="tech-badge">
+                <code>{tech}</code>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Row 2: Metrics and Academic Background Info Boxes */}
       <div className="about-grid secondary-info-grid">
         {/* Box A: Highlight metrics tracking dashboard stats */}
         <div className="supabase-card metrics-box">
