@@ -142,7 +142,25 @@ code {
   width: 100%;
   left: 0;
 }
+.nav-right-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 
+.hire-me-nav-btn {
+  padding: 6px 14px !important;
+  font-size: 0.85rem !important;
+  border-radius: 4px !important;
+  gap: 6px !important;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .hire-me-nav-btn {
+    display: none; /* Safely hides button inside responsive mobile dropdown layouts if needed */
+  }
+}
 /* ==========================================================================
    4. HERO / HOMEPAGE SPLIT ARCHITECTURE
    ========================================================================== */
@@ -864,4 +882,159 @@ code {
     /* Shifts exactly half the track length (one map iteration) before structural looping kicks in */
     transform: translateX(-50%); 
   }
+}
+/* ==========================================================================
+   UPGRADED NAVBAR & HIRE ME UTILITIES
+   ========================================================================== */
+
+
+/* ==========================================================================
+   MINIMALIST SUPABASE-THEMED FOOTER STYLES
+   ========================================================================== */
+.supabase-footer {
+  background-color: #0c0c0d; /* Deep dashboard onyx backplane */
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem 2rem 2rem;
+  margin-top: 6rem;
+  color: var(--text);
+  font-family: var(--font-sans, inherit);
+}
+
+.footer-container-centered {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.footer-brand-column .footer-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.footer-brand-column .footer-logo span {
+  color: var(--accent); /* Emerald green dot accent */
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 320px;
+  margin-bottom: 1.5rem;
+}
+
+/* Active Monitoring Console Pill Indicator */
+.system-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(62, 207, 142, 0.06);
+  border: 1px solid rgba(62, 207, 142, 0.15);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.ping-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  animation: footer-ping 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.footer-links-column h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.2rem;
+}
+
+.footer-links-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-column ul li {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.footer-links-column ul li a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links-column ul li a:hover {
+  color: #fff;
+}
+
+/* Metadata lists format adjustments */
+.meta-info-item {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.meta-label {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
+  margin-right: 4px;
+}
+
+.footer-divider-line {
+  height: 1px;
+  background-color: var(--border);
+  margin: 3rem 0 1.5rem 0;
+}
+
+.footer-bottom-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright-text {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-security-badge code {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes footer-ping {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
