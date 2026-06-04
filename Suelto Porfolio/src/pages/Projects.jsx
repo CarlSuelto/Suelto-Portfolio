@@ -3,7 +3,7 @@ import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
 import responsiveWebImg from '/Responsive web.png';
 import nciiCssImg from '/NCII CSS.png';
-import nciiiEmsImg from '/NCII EMS.png';
+import nciiiEmsImg from '/NCIII EMS.png';
 import objProImg from '/OBJ Pro.png';
 
 
