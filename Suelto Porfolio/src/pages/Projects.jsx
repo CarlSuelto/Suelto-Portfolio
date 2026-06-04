@@ -26,7 +26,7 @@ const Projects = () => {
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
       image: '/Responsive web.png', // 🟢 Matches your folder exactly!
-      description: 'This course teaches the fundamentals of HTML and CSS...'
+      description: 'This course teaches the fundamentals of HTML and CSS including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
     },
     {
       id: 'ach-2',
@@ -34,7 +34,7 @@ const Projects = () => {
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
       image: '/NCII CSS.png', // 🟢 Matches your folder exactly!
-      description: 'Demonstrated 4 core competencies...'
+      description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
       id: 'ach-3',
@@ -42,7 +42,7 @@ const Projects = () => {
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
       image: '/NCIII EMS.png', // 🟢 Matches your folder exactly!
-      description: 'Demonstrated 4 core competencies...'
+      description: 'Demonstrated 4 core competencies in event planning and coordination for successful event execution.'
     },
     {
       id: 'ach-4',
@@ -50,7 +50,7 @@ const Projects = () => {
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
       image: '/OBJ Pro.png', // 🟢 Matches your folder exactly!
-      description: 'Mastered the principles...'
+      description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
   ];
   return (
