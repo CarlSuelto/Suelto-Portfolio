@@ -1072,6 +1072,9 @@ code {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+
+/*DO NOT TOUCH OR REFRACTOR BELOW THIS LINE FOR SAFETY */
+
 /* ==========================================================================
    SUPABASE INTERACTIVE 3D FLIP CARD SYSTEM
    ========================================================================== */
