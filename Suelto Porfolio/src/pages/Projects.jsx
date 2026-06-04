@@ -19,42 +19,40 @@ const Projects = () => {
     setFlippedCardId(flippedCardId === id ? null : id);
   };
 
-  // Hardcoded achievements data array following your profile's data structures
   const achievements = [
-  {
-    id: 'ach-1',
-    title: 'Responsive Web Design Certification',
-    issuer: 'FREECODECAMP',
-    date: 'Certified - 2025',
-    image: '/Responsive-web.png', // 🟢 Updated to match new filename
-    description: 'This course teaches the fundamentals of HTML and CSS, including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
-  },
-  {
-    id: 'ach-2',
-    title: 'Computer Systems Servicing NC II',
-    issuer: 'CSS NC II',
-    date: 'Completed - 2026',
-    image: '/NCII CSS.png', // 🟢 Updated to match new filename
-    description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
-  },
-  {
-    id: 'ach-3',
-    title: 'Events Management Services NC III',
-    issuer: 'EMS NC III',
-    date: 'Completed - 2024',
-    image: '/NCIII EMS.png', // 🟢 Updated to match new filename
-    description: 'Demonstrated 4 core competencies in event planning, logistics coordination, and client communication for successful event execution.'
-  },
-  {
-    id: 'ach-4',
-    title: 'OOPs in Java Programming Certification',
-    issuer: 'OBJECTIVE PROGRAMMING',
-    date: 'Completed - Nov 2025',
-    image: '/OBJ Pro.png', // 🟢 Updated to match new filename
-    description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
-  },
-];
-
+    {
+      id: 'ach-1',
+      title: 'Responsive Web Design Certification',
+      issuer: 'FREECODECAMP',
+      date: 'Certified - 2025',
+      image: '/Responsive web.png', // 🟢 Matches your folder exactly!
+      description: 'This course teaches the fundamentals of HTML and CSS...'
+    },
+    {
+      id: 'ach-2',
+      title: 'Computer Systems Servicing NC II',
+      issuer: 'CSS NC II',
+      date: 'Completed - 2026',
+      image: '/NCII CSS.png', // 🟢 Matches your folder exactly!
+      description: 'Demonstrated 4 core competencies...'
+    },
+    {
+      id: 'ach-3',
+      title: 'Events Management Services NC III',
+      issuer: 'EMS NC III',
+      date: 'Completed - 2024',
+      image: '/NCIII EMS.png', // 🟢 Matches your folder exactly!
+      description: 'Demonstrated 4 core competencies...'
+    },
+    {
+      id: 'ach-4',
+      title: 'OOPs in Java Programming Certification',
+      issuer: 'OBJECTIVE PROGRAMMING',
+      date: 'Completed - Nov 2025',
+      image: '/OBJ Pro.png', // 🟢 Matches your folder exactly!
+      description: 'Mastered the principles...'
+    },
+  ];
   return (
     <section id="projects" className="projects-section">
       <div className="section-header-block">

@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="footer-top-grid">
           {/* Brand/System Status Column */}
           <div className="footer-brand-column">
-            <div className="footer-logo">cvbs<span>.</span></div>
+            <div className="footer-logo">sueltocvb<span> ...</span></div>
             <p className="footer-tagline">Building lightweight, secure web applications backed by scalable database architectures.</p>
             {/* Supabase Style Active Ping Indicator Node */}
             <div className="system-status-pill">
@@ -36,7 +36,7 @@ const Footer = () => {
             <h4>Environment Info</h4>
             <ul>
               <li className="meta-info-item">
-                <span className="meta-label">Degree:</span> DIT Architecture
+                <span className="meta-label">Degree:</span> DIT - Asian College
               </li>
               <li className="meta-info-item">
                 <span className="meta-label">Campus:</span> Asian College
