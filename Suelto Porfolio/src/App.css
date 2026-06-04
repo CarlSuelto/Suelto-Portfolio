@@ -886,6 +886,37 @@ code {
     transform: translateX(-50%); 
   }
 }
+
+/* Individual Color-Aware Tech Items Capsule */
+.tech-badge.color-aware {
+  background: rgba(18, 18, 20, 0.7);
+  /* Uses the custom variable for the border, defaulting to your standard frame color if not found */
+  border: 1px solid var(--badge-glow, var(--border));
+  padding: 10px 20px;
+  border-radius: 6px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: transform 0.2s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.tech-badge.color-aware code {
+  /* Sets code text color directly to the brand asset code color variable */
+  color: var(--badge-text, var(--text));
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Interaction Upgrade: The badge blooms with glow intensity on hover */
+.tech-badge.color-aware:hover {
+  background: var(--badge-glow);
+  border-color: var(--badge-text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--badge-glow);
+}
 /* ==========================================================================
    UPGRADED NAVBAR & HIRE ME UTILITIES
    ========================================================================== */
@@ -1040,4 +1071,267 @@ code {
 @keyframes footer-ping {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
+}
+/* ==========================================================================
+   SUPABASE INTERACTIVE 3D FLIP CARD SYSTEM
+   ========================================================================== */
+.achievements-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* 3D Context Container viewport */
+.flip-card-container {
+  background-color: transparent;
+  height: 340px;
+  perspective: 1000px; /* Essential for 3D depth illusion */
+  cursor: pointer;
+}
+
+/* Structural transformation axis anchor */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+/* Toggle rotation state via state injectors */
+.flip-card-container.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Shared Face Properties Matrix */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Prevent visual overlay leak */
+  backface-visibility: hidden;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* FRONT VIEW PANELS */
+.flip-card-front {
+  background-color: #121214;
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  justify-content: space-between;
+}
+
+.card-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.issuer-badge {
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent); /* Supabase green text accent */
+  background: rgba(62, 207, 142, 0.06);
+  border: 1px solid rgba(62, 207, 142, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.date-badge {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ach-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.ach-desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card-action-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.2s ease;
+}
+
+.flip-card-container:hover .card-action-hint {
+  color: #fff;
+}
+
+/* BACK VIEW PANELS (Flipped state viewport orientation) */
+.flip-card-back {
+  background-color: #0c0c0d;
+  border: 1px solid rgba(62, 207, 142, 0.3); /* Accent highlights indicating validation view */
+  transform: rotateY(180deg);
+  padding: 1rem;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.credential-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevents certificate images from warping or crushing aspects */
+  transition: transform 0.3s ease;
+}
+
+.flip-card-container.is-flipped:hover .credential-img {
+  transform: scale(1.03); /* Subtle internal micro-zoom animation */
+}
+
+.back-footer-overlay {
+  padding-top: 0.75rem;
+}
+
+.back-footer-overlay h4 {
+  font-size: 0.85rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.unflip-action-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   INTERACTIVE FLIP COMPONENT CONFIGURATIONS
+   ========================================================================== */
+/* ==========================================================================
+   UPDATED FLIP CARDS: FIXING HIDDEN IMAGES
+   ========================================================================== */
+.custom-3d-deck {
+  perspective: 1200px;
+}
+
+.flip-card-container {
+  background-color: transparent;
+  height: 380px; 
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d; /* Keep this intact */
+}
+
+.flip-card-container.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+}
+
+.flip-card-back {
+  z-index: 1;
+  transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  background-color: #0c0c0d !important;
+}
+
+.flip-card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+/* BACK PANEL CONFIG */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background-color: #0c0c0d !important;
+  border: 1px solid rgba(62, 207, 142, 0.3) !important;
+  padding: 1.25rem !important;
+  z-index: 1; /* Ensures backface stays explicitly stacked */
+}
+.achievement-image-wrapper {
+  width: 100%;
+  height: 240px; /* 🔴 Force a solid, fixed height so the image has room to expand */
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.achievement-card-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Prevents warping */
+  display: block !important;
+}
+.achievement-card-img {
+  border: 3px solid red !important;
+  min-width: 50px;
+  min-height: 50px;
+}
+/* Ensure the image wrapper on the back of the card doesn't crush down */
+.achievement-image-wrapper {
+  width: 100%;
+  height: 250px; /* 🔴 Gives it a rigid, un-squashable height frame */
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.achievement-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important; /* Retains certificate scale bounds */
+  display: block !important;
 }

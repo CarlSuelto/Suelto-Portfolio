@@ -87,25 +87,64 @@ const About = () => {
         </div>
       </div>
 
-      {/* 🚀 NEW UPGRADE: Infinite Sliding Tech Stack Carousel */}
-      <div className="supabase-card carousel-section-card">
-        <h3>Technical Ecosystem and Skills Set</h3>
-        <div className="tech-carousel-viewport">
-          <div className="tech-carousel-track">
-            {/* Array is mapped twice back-to-back to enable smooth infinite loop transitions */}
+     {/* 🚀 UPGRADED: Infinite Sliding Tech Stack Carousel with Brand Colors */}
+<div className="supabase-card carousel-section-card">
+  <h3>Technical Ecosystem and Skills Set</h3>
+  <div className="tech-carousel-viewport">
+    <div className="tech-carousel-track">
+      {/* Function to dynamically generate brand colors based on the tech name */}
+      {(() => {
+        const getColorStyles = (tech) => {
+          switch (tech.toLowerCase()) {
+            case 'react.js':
+            case 'vite':
+              return { '--badge-glow': 'rgba(97, 218, 251, 0.1)', '--badge-text': '#61dafb' };
+            case 'javascript':
+              return { '--badge-glow': 'rgba(247, 223, 30, 0.1)', '--badge-text': '#f7df1e' };
+            case 'supabase':
+            case 'postgresql':
+              return { '--badge-glow': 'rgba(62, 207, 142, 0.1)', '--badge-text': '#3ecf8e' };
+            case 'html5':
+              return { '--badge-glow': 'rgba(227, 79, 38, 0.1)', '--badge-text': '#e34f26' };
+            case 'css3':
+              return { '--badge-glow': 'rgba(21, 114, 182, 0.1)', '--badge-text': '#1572b6' };
+            case 'git/github':
+              return { '--badge-glow': 'rgba(240, 80, 51, 0.1)', '--badge-text': '#f05033' };
+            case 'node.js':
+              return { '--badge-glow': 'rgba(104, 160, 99, 0.1)', '--badge-text': '#68a063' };
+            default:
+              // Cyan/Teal glow default for general skills like UI/UX or REST APIs
+              return { '--badge-glow': 'rgba(45, 212, 191, 0.1)', '--badge-text': '#2dd4bf' };
+          }
+        };
+
+        // Render the double tracks for seamless looping
+        return (
+          <>
             {techStack.map((tech, i) => (
-              <div key={`track1-${i}`} className="tech-badge">
+              <div 
+                key={`track1-${i}`} 
+                className="tech-badge color-aware" 
+                style={getColorStyles(tech)}
+              >
                 <code>{tech}</code>
               </div>
             ))}
             {techStack.map((tech, i) => (
-              <div key={`track2-${i}`} className="tech-badge">
+              <div 
+                key={`track2-${i}`} 
+                className="tech-badge color-aware" 
+                style={getColorStyles(tech)}
+              >
                 <code>{tech}</code>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
+          </>
+        );
+      })()}
+    </div>
+  </div>
+</div>
 
       {/* Row 2: Metrics and Academic Background Info Boxes */}
       <div className="about-grid secondary-info-grid">
