@@ -38,7 +38,7 @@ const About = () => {
       handle: 'cbsuelto.student@asiancollege.edu.ph',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="24" height="24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25 2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
         </svg>
       )
     },
@@ -57,45 +57,45 @@ const About = () => {
   const techStack = [
     'React.js', 'JavaScript', 'Supabase', 'PostgreSQL', 
     'HTML5', 'CSS3', 'Git/GitHub', 'REST APIs', 
-    'Vite', 'Node.js', 'UI/UX Design', 'Responsive Web'
+    'Vite', 'Node.js', 'UI/UX Design', 'Responsive Web', 'Photoshop'
   ];
 
   const hobbies = [
     { title: 'Coding Experiments', category: 'Development', imgSrc: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=400&q=80' },
     { title: 'Setup & Hardware', category: 'Tech Enthusiast', imgSrc: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80' },
-    { title: 'Basketball', category: 'Sports', imgSrc: 'https://images.unsplash.com/photo-1519766304817-4f37bda74a27?auto=format&fit=crop&w=400&q=80' },
-    { title: 'Mobile Gaming/Mobile Legends', category: 'Gaming', imgSrc: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80' },
-    { title: 'Movie Marathons', category: 'Movies', imgSrc: 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=400&q=80' },
-    { title: 'Walking & Exploring', category: 'Outdoors', imgSrc: 'https://images.unsplash.com/photo-1551632811-561730d1e442?auto=format&fit=crop&w=400&q=80' }
+    { title: 'Basketball', category: 'Sports', imgSrc: 'ball on court.png' },
+    { title: 'Mobile Gaming/Mobile Legends', category: 'Gaming', imgSrc: 'ml player.png' },
+    { title: 'Movie Marathons', category: 'Movies', imgSrc: 'movie.png' },
+    { title: 'Walking & Exploring', category: 'Outdoors', imgSrc: 'walking.png' }
   ];
 
   return (
-    <section id="about" className="about-section" style={{ padding: '40px 20px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <div className="about-header" style={{ marginBottom: '8px' }}>
+    <section id="about" className="about-section" style={{ padding: '40px 20px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <div className="about-header" style={{ marginBottom: '4px' }}>
         <h2>About Me</h2>
         <p className="section-subtitle">DIT Student & Web Developer</p>
       </div>
 
-      {/* Row 1: Bio & Skills */}
-      <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <div className="supabase-card bio-box" style={{ padding: '24px' }}>
-          <h3 style={{ marginBottom: '16px' }}>My Mission</h3>
-          <p>I am a passionate software developer specializing in modern JavaScript frameworks, responsive UI architecture, and cloud database integrations like Supabase.</p>
-          <p style={{ marginTop: '16px' }}>My core goal is to write clean, scalable code that delivers exceptional user experiences.</p>
+      {/* RESTORED FROM PIC 1: Single-Column Full Width stacked panel structure */}
+      <div className="about-grid-top" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div className="supabase-card bio-box" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <h3 style={{ margin: 0, fontSize: '1.4rem' }}>My Mission</h3>
+          <p style={{ margin: 0, lineHeight: '1.6', color: '#e4e4e7' }}>I am a passionate software developer specializing in modern JavaScript frameworks, responsive UI architecture, and cloud database integrations like Supabase.</p>
+          <p style={{ margin: 0, marginTop: '8px', lineHeight: '1.6', color: '#e4e4e7' }}>My core goal is to write clean, scalable code that delivers exceptional user experiences.</p>
         </div>
 
-        <div className="supabase-card skills-box" style={{ padding: '24px' }}>
-          <h3 style={{ marginBottom: '16px' }}>Core Competencies</h3>
-          <ul className="skills-list" style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none', padding: 0 }}>
-            <li><code style={{ marginRight: '8px' }}>React.js</code> Hooks & State Management</li>
-            <li><code style={{ marginRight: '8px' }}>Supabase</code> PostgreSQL Database Systems</li>
-            <li><code style={{ marginRight: '8px' }}>RESTful APIs</code> Asynchronous Engineering</li>
-            <li><code style={{ marginRight: '8px' }}>UI/UX Design</code> CSS Grid & Flexbox Systems</li>
+        <div className="supabase-card skills-box" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <h3 style={{ margin: 0, fontSize: '1.4rem' }}>Core Competencies</h3>
+          <ul className="skills-list" style={{ display: 'flex', flexDirection: 'column', gap: '16px', listStyle: 'none', padding: 0, margin: 0 }}>
+            <li style={{ color: '#e4e4e7' }}><code style={{ marginRight: '12px', backgroundColor: '#27272a', color: '#3ecf8e', padding: '4px 8px', borderRadius: '4px' }}>React.js</code> Hooks & State Management</li>
+            <li style={{ color: '#e4e4e7' }}><code style={{ marginRight: '12px', backgroundColor: '#27272a', color: '#3ecf8e', padding: '4px 8px', borderRadius: '4px' }}>Supabase</code> PostgreSQL Database Systems</li>
+            <li style={{ color: '#e4e4e7' }}><code style={{ marginRight: '12px', backgroundColor: '#27272a', color: '#3ecf8e', padding: '4px 8px', borderRadius: '4px' }}>RESTful APIs</code> Asynchronous Engineering</li>
+            <li style={{ color: '#e4e4e7' }}><code style={{ marginRight: '12px', backgroundColor: '#27272a', color: '#3ecf8e', padding: '4px 8px', borderRadius: '4px' }}>UI/UX Design</code> CSS Grid & Flexbox Systems</li>
           </ul>
         </div>
       </div>
 
-      {/* Technical Ecosystem Marquee */}
+      {/* RETAINED FEATURE FROM PIC 3: Technical Ecosystem Skills Infinite Carousel */}
       <div className="supabase-card carousel-section-card" style={{ padding: '24px' }}>
         <h3 style={{ marginBottom: '16px' }}>Technical Ecosystem and Skills Set</h3>
         <div className="tech-carousel-viewport">
@@ -119,6 +119,8 @@ const About = () => {
                     return { '--badge-glow': 'rgba(240, 80, 51, 0.1)', '--badge-text': '#f05033' };
                   case 'node.js':
                     return { '--badge-glow': 'rgba(104, 160, 99, 0.1)', '--badge-text': '#68a063' };
+                  case 'photoshop':
+                    return { '--badge-glow': 'rgba(49, 168, 255, 0.1)', '--badge-text': '#31a8ff' };
                   default:
                     return { '--badge-glow': 'rgba(45, 212, 191, 0.1)', '--badge-text': '#2dd4bf' };
                 }
@@ -143,93 +145,89 @@ const About = () => {
         </div>
       </div>
 
-      {/* Row 2: Metrics, Academic Background, and Hobbies Media Grid */}
-      <div className="about-grid secondary-info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '24px' }}>
+      {/* RESTORED FROM PIC 2: Sequential stacked cards for metrics, background, and wide grid layout for hobbies */}
+      <div className="about-grid-secondary" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         
-        {/* Box A: Quick Overview */}
+        {/* Quick Overview */}
         <div className="supabase-card metrics-box" style={{ padding: '24px' }}>
-          <h3 style={{ marginBottom: '16px' }}>Quick Overview</h3>
-          <div className="metrics-display-container" style={{ display: 'flex', gap: '32px' }}>
+          <h3 style={{ marginBottom: '20px' }}>Quick Overview</h3>
+          <div className="metrics-display-container" style={{ display: 'flex', gap: '48px' }}>
             <div className="metric-item">
-              <span className="metric-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: '#3ecf8e' }}>DIT</span>
-              <span className="metric-label" style={{ color: '#a1a1aa' }}>Information Tech Degree</span>
+              <span className="metric-number" style={{ display: 'block', fontSize: '1.8rem', fontWeight: 'bold', color: '#3ecf8e' }}>DIT</span>
+              <span className="metric-label" style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Information Tech Degree</span>
             </div>
             <div className="metric-item">
-              <span className="metric-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: '#3ecf8e' }}>10+</span>
-              <span className="metric-label" style={{ color: '#a1a1aa' }}>Projects Completed</span>
+              <span className="metric-number" style={{ display: 'block', fontSize: '1.8rem', fontWeight: 'bold', color: '#3ecf8e' }}>10+</span>
+              <span className="metric-label" style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Projects Completed</span>
             </div>
           </div>
         </div>
 
-        {/* Box B: Academic Background */}
+        {/* Academic & Foundation */}
         <div className="supabase-card background-box" style={{ padding: '24px' }}>
           <h3 style={{ marginBottom: '16px' }}>Academic & Foundation</h3>
           <div className="timeline-stack">
             <div className="timeline-node">
               <div className="node-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                <h4 style={{ margin: 0 }}>Asian College</h4>
+                <h4 style={{ margin: 0, fontSize: '1.05rem' }}>Asian College</h4>
                 <span className="node-badge" style={{ backgroundColor: 'rgba(62, 207, 142, 0.1)', color: '#3ecf8e', padding: '2px 8px', borderRadius: '4px', fontSize: '0.75rem' }}>Current</span>
               </div>
-              <p className="node-desc" style={{ margin: 0, color: '#a1a1aa' }}>Department of Information Technology — pursuing modern computing systems architecture, databases, and structural coding practices.</p>
+              <p className="node-desc" style={{ margin: 0, color: '#a1a1aa', lineHeight: '1.5', fontSize: '0.9rem' }}>
+                Department of Information Technology — pursuing modern computing systems architecture, databases, and structural coding practices.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Box C: Hobbies & Outlets with clean spacing */}
+        {/* Hobbies & Outlets - RESTORED: Horizontal row structure with 2 columns */}
         <div className="supabase-card hobbies-box" style={{ padding: '24px' }}>
-          <h3 style={{ marginBottom: '8px' }}>Hobbies & Outlets</h3>
-          <p style={{ fontSize: '0.9rem', color: '#a1a1aa', marginBottom: '20px' }}>
+          <h3 style={{ marginBottom: '6px' }}>Hobbies & Outlets</h3>
+          <p style={{ fontSize: '0.85rem', color: '#a1a1aa', marginBottom: '16px' }}>
             What drives my creativity outside of formal coding curriculum parameters:
           </p>
           
-          {/* Sub-grid optimized for 2 columns, auto-adjusting rows */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(45%, 1fr))', gap: '16px' }}>
             {hobbies.map((hobby, index) => (
               <div 
                 key={index} 
                 className="hobby-image-card"
                 style={{
                   position: 'relative',
-                  height: '130px',
-                  borderRadius: '8px',
+                  height: '140px',
+                  borderRadius: '6px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  backgroundColor: '#18181b'
+                  border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
                 <img 
                   src={hobby.imgSrc} 
                   alt={hobby.title}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.4s ease'
-                  }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   className="hobby-card-img"
                 />
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, rgba(10, 10, 10, 0.95) 25%, rgba(0, 0, 0, 0.1) 100%)',
+                  background: 'linear-gradient(to top, rgba(10, 10, 10, 0.95) 25%, rgba(0, 0, 0, 0) 100%)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'flex-end',
-                  padding: '12px'
+                  padding: '14px'
                 }}>
-                  <span style={{ fontSize: '0.65rem', color: '#3ecf8e', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: '0.05em' }}>{hobby.category}</span>
-                  <h4 style={{ fontSize: '0.9rem', color: '#ffffff', margin: '4px 0 0 0', fontWeight: '500' }}>{hobby.title}</h4>
+                  <span style={{ fontSize: '0.65rem', color: '#3ecf8e', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: '0.5px' }}>{hobby.category}</span>
+                  <h4 style={{ fontSize: '0.9rem', color: '#ffffff', margin: '4px 0 0 0', fontWeight: '600' }}>{hobby.title}</h4>
                 </div>
               </div>
             ))}
           </div>
         </div>
+
       </div>
 
-      {/* Row 3: Social Media Integrations */}
-      <div className="social-section-wrapper" style={{ marginTop: '16px' }}>
-        <h3 className="social-title" style={{ marginBottom: '20px' }}>Connect With Me</h3>
-        <div className="social-grid" id="social" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+      {/* RETAINED FEATURE FROM PIC 4: Updated handles and full width social connection matrix */}
+      <div className="social-section-wrapper" style={{ marginTop: '12px' }}>
+        <h3 className="social-title" style={{ marginBottom: '16px' }}>Connect With Me</h3>
+        <div className="social-grid" id="social" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
           {socialLinks.map((social, index) => (
             <a 
               key={index} 
@@ -241,9 +239,9 @@ const About = () => {
             >
               <div className="social-icon-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
                 <div className="button-icon" style={{ display: 'flex', alignItems: 'center' }}>{social.icon}</div>
-                <h4 style={{ margin: 0 }}>{social.name}</h4>
+                <h4 style={{ margin: 0, fontSize: '1rem' }}>{social.name}</h4>
               </div>
-              <p className="social-handle" style={{ margin: 0, color: '#a1a1aa', fontSize: '0.85rem', wordBreak: 'break-all' }}>{social.handle}</p>
+              <p className="social-handle" style={{ margin: 0, color: '#a1a1aa', fontSize: '0.8rem', wordBreak: 'break-all' }}>{social.handle}</p>
             </a>
           ))}
         </div>
