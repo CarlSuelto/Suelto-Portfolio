@@ -34,6 +34,14 @@ const Achievements = () => {
       image: '/OBJ Pro.png', 
       description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
+    {
+      id: 'ach-5',
+      title: 'SIL (Job Internship)',
+      issuer: 'ECE',
+      date: 'Completed - June 2024',
+      image: '/ece coc.png', 
+      description: 'Successfully completed a 200 hrs internship at ECE, gaining hands-on experience in IT support, network administration, and system maintenance.'
+    },
   ];
 
   const [flippedCardId, setFlippedCardId] = useState(null);
