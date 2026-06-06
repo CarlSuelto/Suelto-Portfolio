@@ -45,20 +45,26 @@ const Home = () => {
   }, [displayedText, isDeleting, currentPhraseIndex]);
 
   return (
-    <section id="home" className="hero-section-fullscreen">
+    /* 💡 INTEGRATED: Added dynamic theme background and text variables here */
+    <section 
+      id="home" 
+      className="hero-section-fullscreen"
+      style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)' }}
+    >
       {/* RESTORED: Original fluid container parameters */}
       <div className="hero-split-container">
         
         {/* LEFT COLUMN: Text and Actions */}
         <div className="hero-left-content">
-          <h1 className="hero-title">
-            Hello there, <span className="highlight">Carl Vincent</span> here.
+          {/* 💡 INTEGRATED: Applied explicit variables to text tags so theme color overrides work cleanly */}
+          <h1 className="hero-title" style={{ color: 'var(--text-primary)' }}>
+            Hello there, <span className="highlight" style={{ color: 'var(--brand-emerald)' }}>Carl Vincent</span> here.
           </h1>
-          <h2 className="hero-subtitle"> a Diploma Student</h2>
+          <h2 className="hero-subtitle" style={{ color: 'var(--text-secondary)' }}> a Diploma Student</h2>
           
-          <p className="typewriter-paragraph">
-            I am <span className="typed-text">{displayedText}</span>
-            <span className="cursor">|</span>
+          <p className="typewriter-paragraph" style={{ color: 'var(--text-secondary)' }}>
+            I am <span className="typed-text" style={{ color: 'var(--brand-emerald)' }}>{displayedText}</span>
+            <span className="cursor" style={{ color: 'var(--brand-emerald)' }}>|</span>
           </p>
 
           <div className="hero-actions">
@@ -91,8 +97,10 @@ const Home = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: '2px solid rgba(62, 207, 142, 0.15)', // Subdued green accent border line
-                boxShadow: '0 0 45px rgba(62, 207, 142, 0.15), 0 20px 40px rgba(0, 0, 0, 0.5)'
+                /* 💡 INTEGRATED: Swapped static values for borders, background cards, and adaptive glow drop-shadows */
+                border: '2px solid var(--border-accent)', 
+                backgroundColor: 'var(--bg-card)',
+                boxShadow: '0 0 45px var(--border-accent), 0 20px 40px rgba(0, 0, 0, 0.25)'
               }}
             >
               <img 

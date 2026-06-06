@@ -1,8 +1,10 @@
 import React from 'react';
+import ThemeToggle from './ThemeToggle'; 
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    /* 💡 CHANGED: Navbar background and text now use variables */
+    <nav className="navbar" style={{ backgroundColor: 'var(--bg-main)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="nav-logo jumping-letters">
         <span>c</span>
         <span>v</span>
@@ -13,13 +15,16 @@ const Navbar = () => {
       
       <div className="nav-right-container" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
         <ul className="nav-links">
-          <li><a href="#home" className="nav-item">Home</a></li>
-          <li><a href="#about" className="nav-item">About</a></li>
-          <li><a href="#projects" className="nav-item">Projects</a></li>
-          <li><a href="#contact" className="nav-item">Contact</a></li>
+          {/* 💡 CHANGED: Explicit style overrides to ensure links read text tokens */}
+          <li><a href="#home" className="nav-item" style={{ color: 'var(--text-primary)' }}>Home</a></li>
+          <li><a href="#about" className="nav-item" style={{ color: 'var(--text-primary)' }}>About</a></li>
+          <li><a href="#projects" className="nav-item" style={{ color: 'var(--text-primary)' }}>Projects</a></li>
+          <li><a href="#contact" className="nav-item" style={{ color: 'var(--text-primary)' }}>Contact</a></li>
         </ul>
         
-        {/* 🚀 NEW: Signature Supabase-themed Action Button */}
+        <ThemeToggle />
+        
+        {/* Action Button */}
         <a href="#footer" className="btn-primary-supabase hire-me-nav-btn">
           <span>Hire Me</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="14" height="14">

@@ -1154,3 +1154,45 @@ code {
   object-fit: contain !important; /* Retains original certification proportions */
   display: block !important;
 }
+/* ==========================================================================
+   THEME VARIABLE CONFIGURATION
+   ========================================================================== */
+
+/* Default: Sleek Dark Supabase Emerald Aesthetic */
+:root {
+  --bg-main: #0c0c0e;
+  --bg-card: #16161a;
+  --bg-card-hover: #1e1e24;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(62, 207, 142, 0.15);
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  --brand-emerald: #3ecf8e;
+  --brand-emerald-hover: #34b279;
+  --badge-bg: rgba(62, 207, 142, 0.1);
+}
+
+/* Ultra-Sharp High-Contrast Light Theme */
+[data-theme='light'] {
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f5;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(62, 207, 142, 0.3);
+  
+  --text-primary: #1a1a1e;
+  --text-secondary: #4a4a52;
+  --text-muted: #70707c;
+  
+  --brand-emerald: #07b066; /* Deepened slightly for perfect readability on light backgrounds */
+  --brand-emerald-hover: #058f52;
+  --badge-bg: rgba(7, 176, 102, 0.12);
+}
+
+/* Global smooth transition override so theme shifts look fluid */
+body, div, section, h1, h2, h3, h4, p, span, a, button {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
