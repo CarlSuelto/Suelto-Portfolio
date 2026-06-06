@@ -40,7 +40,15 @@ const Achievements = () => {
       issuer: 'ECE',
       date: 'Completed - June 2024',
       image: '/ece coc.png', 
-      description: 'Successfully completed a 200 hrs internship at ECE, gaining hands-on experience in IT support, network administration, and system maintenance.'
+      description: 'Successfully completed a 100 hrs SIL (Supervised Industry Learning) internship at ECE, gaining hands-on experience in IT support, network administration, and system maintenance.'
+    },
+    {
+      id: 'ach-6',
+      title: 'SIL (Job Internship)',
+      issuer: 'Inspiro & Infocom',
+      date: 'Completed - August 2025',
+      image: '/inspiro.png', 
+      description: 'Successfully completed a 200 hrs SIL (Supervised Industry Learning) internship at Inspiro & Infocom, gaining hands-on experience in IT support, network administration, and system maintenance.'
     },
   ];
 

@@ -50,14 +50,21 @@ const Projects = () => {
       issuer: 'ECE',
       date: 'Completed - June 2024',
       image: '/ece coc.png', 
-      description: 'Successfully completed a 200 hrs internship at ECE, gaining hands-on experience in IT support, network administration, and system maintenance.'
+      description: 'Successfully completed a 100 hrs SIL (Supervised Industry Learning) internship at ECE, gaining hands-on experience in IT support, network administration, and system maintenance.'
+    },
+    {
+      id: 'ach-6',
+      title: 'SIL (Job Internship)',
+      issuer: 'Inspiro & Infocom',
+      date: 'Completed - August 2025',
+      image: '/inspiro.png', 
+      description: 'Successfully completed a 200 hrs SIL (Supervised Industry Learning) internship at Inspiro & Infocom, gaining hands-on experience in IT support, network administration, and system maintenance.'
     },
   ];
 
   return (
     <section id="projects" className="projects-section">
       
-      {/* 🔴 FORCE CRITICAL 3D CORE RENDERING RULES INTO ENGINE */}
       <style>{`
         .forced-perspective-container {
           perspective: 1200px !important;
@@ -98,20 +105,17 @@ const Projects = () => {
         <p className="section-subtitle">Real-time dynamic data pulled from Supabase backend alongside verified credentials.</p>
       </div>
 
-      {/* Control Tabs */}
       <div className="portfolio-tab-row">
         <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => setActiveTab('all')}>Show All</button>
         <button className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`} onClick={() => setActiveTab('projects')}>Projects ({projects ? projects.length : 0})</button>
         <button className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`} onClick={() => setActiveTab('achievements')}>Achievements ({achievements.length})</button>
       </div>
 
-      {/* LOADING/ERROR HANDLERS */}
       {(activeTab === 'all' || activeTab === 'projects') && loading && <div className="loader">Loading dynamic portfolio items...</div>}
       {(activeTab === 'all' || activeTab === 'projects') && error && <div className="error-msg">Error loading projects: {error}</div>}
 
       <div className="portfolio-master-layout-grid">
-        
-        {/* Dynamic Project Streams */}
+
         {(activeTab === 'all' || activeTab === 'projects') && !loading && !error && (
           <div className="projects-sub-column">
             {activeTab === 'all' && <h3>Featured Builds</h3>}
@@ -123,10 +127,9 @@ const Projects = () => {
           </div>
         )}
 
-        {/* Structured Achievement Grid Boxes */}
         {(activeTab === 'all' || activeTab === 'achievements') && (
           <div className="achievements-sub-column">
-            {activeTab === 'all' && <h3>Academic & Technical Milestones</h3>}
+            {activeTab === 'all' && <h3>Academic & Technical Milestones with SIL Internships</h3>}
             
             <div className="achievements-box-grid custom-3d-deck">
               {achievements.map((item) => {
