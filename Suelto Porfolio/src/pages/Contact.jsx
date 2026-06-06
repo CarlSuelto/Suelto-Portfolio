@@ -43,8 +43,7 @@ const Contact = () => {
         console.error('Database insertion breakdown:', error.message);
         setErrorMessage(error.message || 'Transmission failed. Pipeline connection lost.');
       } finally {
-        box-sizing; border-box;
-        setLoading(false);
+        setLoading(false); // Clean and clear!
       }
     }
   };
