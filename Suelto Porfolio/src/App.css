@@ -78,51 +78,7 @@ code {
   border-radius: 4px;
   color: var(--accent);
 }
-/* Container holding the image and managing the circle boundary */
-.profile-glow-container {
-  position: relative;
-  width: 250px;  /* Adjust sizes to match your portfolio layout */
-  height: 250px;
-  border-radius: 50%;
-  padding: 8px;  /* Space between your image and the outer glow */
-  background: #121214; /* Dark backing to match your UI background */
-  
-  /* Applying a sleek, subtle initial border */
-  border: 2px solid rgba(52, 211, 153, 0.2);
-  
-  /* Triggering the infinite on-and-off beating rhythm */
-  animation: avatar-pulse 3s infinite ease-in-out;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
 
-/* Ensure your photo scales beautifully inside the glowing ring */
-.profile-image-avatar {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* 🟢 THE PULSE ANIMATION (The Core Engine) */
-@keyframes avatar-pulse {
-  0% {
-    border-color: rgba(52, 211, 153, 0.2);
-    box-shadow: 0 0 0px rgba(52, 211, 153, 0);
-  }
-  50% {
-    /* At peak pulse, the border color brightens and blasts out a neon aura */
-    border-color: rgba(52, 211, 153, 0.8);
-    box-shadow: 0 0 20px rgba(52, 211, 153, 0.4), 
-                inset 0 0 12px rgba(52, 211, 153, 0.2);
-  }
-  100% {
-    border-color: rgba(52, 211, 153, 0.2);
-    box-shadow: 0 0 0px rgba(52, 211, 153, 0);
-  }
-}
 
 /* ==========================================================================
    3. NAVIGATION BAR (Fixed Studio Layout with Hover Effects)
