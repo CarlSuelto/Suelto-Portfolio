@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
 
+/* 🟢 FORCED IMPORTS: This tells Vite to bypass asset security rules and load the images directly */
+import responsiveWebImg from '../../public/Responsive web.png';
+import nciiCssImg from '../../public/NCII CSS.png';
+import nciiiEmsImg from '../../public/NCIII EMS.png';
+import objProImg from '../../public/OBJ Pro.png';
+
 const Projects = () => {
   const { projects, loading, error } = useFetchProjects();
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'projects', 'achievements'
@@ -10,7 +16,6 @@ const Projects = () => {
   const [flippedCardId, setFlippedCardId] = useState(null);
 
   const handleCardClick = (id) => {
-    // Toggle flip state: if it's already flipped, close it. Otherwise, flip the new one.
     setFlippedCardId(flippedCardId === id ? null : id);
   };
 
@@ -20,7 +25,7 @@ const Projects = () => {
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
-      image: '/Responsive web.png',
+      image: responsiveWebImg, // 🟢 Now uses the forced asset handle
       description: 'This course teaches the fundamentals of HTML and CSS including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
     },
     {
@@ -28,7 +33,7 @@ const Projects = () => {
       title: 'Computer Systems Servicing NC II',
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
-      image: '/NCII CSS.png',
+      image: nciiCssImg, // 🟢 Now uses the forced asset handle
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
@@ -36,7 +41,7 @@ const Projects = () => {
       title: 'Events Management Services NC III',
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
-      image: '/NCIII EMS.png',
+      image: nciiiEmsImg, // 🟢 Now uses the forced asset handle
       description: 'Demonstrated 4 core competencies in event planning and coordination for successful event execution.'
     },
     {
@@ -44,7 +49,7 @@ const Projects = () => {
       title: 'OOPs in Java Programming Certification',
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
-      image: '/OBJ Pro.png',
+      image: objProImg, // 🟢 Now uses the forced asset handle
       description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
   ];
@@ -56,7 +61,7 @@ const Projects = () => {
         <p className="section-subtitle">Real-time dynamic data pulled from Supabase backend alongside verified credentials.</p>
       </div>
 
-      {/* Control Tabs to filter view states */}
+      {/* Control Tabs */}
       <div className="portfolio-tab-row">
         <button 
           className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`}
@@ -78,7 +83,7 @@ const Projects = () => {
         </button>
       </div>
 
-      {/* PROJECT LOADING/ERROR HANDLERS */}
+      {/* LOADING/ERROR HANDLERS */}
       {(activeTab === 'all' || activeTab === 'projects') && loading && (
         <div className="loader">Loading dynamic portfolio items...</div>
       )}
@@ -118,9 +123,7 @@ const Projects = () => {
                   >
                     <div className="flip-card-inner">
                       
-                      {/* ==========================================
-                          FRONT VIEW: Metadata Details Panel 
-                          ========================================== */}
+                      {/* FRONT VIEW PANEL */}
                       <div className="flip-card-front supabase-card achievement-item-card">
                         <div className="achievement-badge-row">
                           <span className="badge-issuer">{item.issuer}</span>
@@ -140,9 +143,7 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      {/* ==========================================
-                          BACK VIEW: Full Document Image Render Plane 
-                          ========================================== */}
+                      {/* BACK VIEW PANEL */}
                       <div className="flip-card-back supabase-card achievement-item-card">
                         <div className="achievement-image-wrapper">
                           <img 
@@ -161,7 +162,7 @@ const Projects = () => {
                         </div>
                       </div>
 
-                    </div> {/* Closes flip-card-inner */}
+                    </div>
                   </div>
                 );
               })}
