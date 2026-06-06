@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
 
-/* FORCED IMPORTS: Resolves any internal Vite compilation asset parsing issues */
-import responsiveWebImg from '../../public/Responsive web.png';
-import nciiCssImg from '../../public/NCII CSS.png';
-import nciiiEmsImg from '../../public/NCIII EMS.png';
-import objProImg from '../../public/OBJ Pro.png';
-
 const Projects = () => {
   const { projects, loading, error } = useFetchProjects();
   const [activeTab, setActiveTab] = useState('all'); 
@@ -17,13 +11,14 @@ const Projects = () => {
     setFlippedCardId(flippedCardId === id ? null : id);
   };
 
+  // 🟢 CLEAN STRING PATHS: No imports at the top!
   const achievements = [
     {
       id: 'ach-1',
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
-      image: responsiveWebImg, 
+      image: '/Responsive web.png', 
       description: 'This course teaches the fundamentals of HTML and CSS including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
     },
     {
@@ -31,7 +26,7 @@ const Projects = () => {
       title: 'Computer Systems Servicing NC II',
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
-      image: nciiCssImg, 
+      image: '/NCII CSS.png', 
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
@@ -39,7 +34,7 @@ const Projects = () => {
       title: 'Events Management Services NC III',
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
-      image: nciiiEmsImg, 
+      image: '/NCIII EMS.png', 
       description: 'Demonstrated 4 core competencies in event planning and coordination for successful event execution.'
     },
     {
@@ -47,7 +42,7 @@ const Projects = () => {
       title: 'OOPs in Java Programming Certification',
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
-      image: objProImg, 
+      image: '/OBJ Pro.png', 
       description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
   ];
@@ -121,7 +116,7 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      {/* 🟢 BACK VIEW PANEL: Properly closed and aligned inside flip-card-inner */}
+                      {/* BACK VIEW PANEL */}
                       <div className="flip-card-back supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', justifyContent: 'space-between', padding: '1.25rem', boxSizing: 'border-box' }}>
                         <div className="achievement-image-wrapper" style={{ width: '100%', height: '250px', backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
                           <img 
@@ -141,7 +136,7 @@ const Projects = () => {
                         </div>
                       </div>
 
-                    </div> {/* Closes flip-card-inner */}
+                    </div>
                   </div>
                 );
               })}

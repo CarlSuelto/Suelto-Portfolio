@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const Achievements = () => {
-  // 🟢 MOVED INSIDE THE COMPONENT: Keeps the static strings stable within the render cycle
   const achievements = [
     {
       id: 'ach-1',
@@ -37,7 +36,6 @@ const Achievements = () => {
     },
   ];
 
-  // Track which card is currently flipped
   const [flippedCardId, setFlippedCardId] = useState(null);
 
   const handleCardClick = (id) => {
@@ -63,7 +61,7 @@ const Achievements = () => {
             >
               <div className="flip-card-inner">
                 
-                {/* FRONT FACE: Metadata Text */}
+                {/* FRONT FACE */}
                 <div className="flip-card-front supabase-card">
                   <div className="card-top-meta">
                     <span className="issuer-badge">{ach.issuer}</span>
@@ -80,9 +78,9 @@ const Achievements = () => {
                   </div>
                 </div>
 
-                {/* BACK FACE: Image Display Plane */}
-                <div className="flip-card-back supabase-card">
-                  <div className="image-wrapper" style={{ width: '100%', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                {/* BACK FACE */}
+                <div className="flip-card-back supabase-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', justifyContent: 'space-between', padding: '1.25rem', boxSizing: 'border-box' }}>
+                  <div className="image-wrapper" style={{ width: '100%', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', backgroundColor: 'rgba(0,0,0,0.3)', borderRadius: '6px' }}>
                     <img 
                       src={ach.image} 
                       alt={`${ach.title} Document`} 
