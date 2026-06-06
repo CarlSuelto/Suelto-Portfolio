@@ -63,7 +63,7 @@ const Projects = () => {
     {
       id: 'ach-7',
       title: 'Search Engine Optimization (SEO) Seminar',
-      issuer: 'Asian College of Science and Technology',
+      issuer: 'ACSAT',
       date: 'Completed - Apr 2024',
       image: '/seo.png', 
       description: 'Attended a comprehensive seminar on Search Engine Optimization (SEO) covering keyword research, on-page and off-page optimization techniques, and SEO analytics tools to enhance website visibility and ranking.'
