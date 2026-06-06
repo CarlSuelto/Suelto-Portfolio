@@ -71,8 +71,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="projects-section">
+    /* 💡 CHANGED: Main section wraps color tokens uniformly */
+    <section id="projects" className="projects-section" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
       
+      {/* 💡 CHANGED: Inside the style tag, explicit theme hooks are mapped to card items */}
       <style>{`
         .forced-perspective-container {
           perspective: 1200px !important;
@@ -97,6 +99,9 @@ const Projects = () => {
           backface-visibility: hidden !important;
           -webkit-backface-visibility: hidden !important;
           box-sizing: border-box !important;
+          background-color: var(--bg-card) !important;
+          border: 1px solid var(--border-subtle) !important;
+          border-radius: 8px;
         }
         .forced-face-front {
           z-index: 2 !important;
@@ -106,27 +111,49 @@ const Projects = () => {
           transform: rotateY(180deg) !important;
           z-index: 1 !important;
         }
+        .front-card-body-content h4 {
+          color: var(--text-primary) !important;
+          margin-bottom: 8px;
+        }
+        .front-card-body-content p {
+          color: var(--text-secondary) !important;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+        .badge-issuer {
+          background-color: var(--bg-main) !important;
+          color: var(--brand-emerald) !important;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+        .badge-date {
+          color: var(--text-secondary) !important;
+          font-size: 0.75rem;
+        }
       `}</style>
 
-      <div className="section-header-block">
-        <h2>Portfolio & Milestones</h2>
-        <p className="section-subtitle">Real-time dynamic data pulled from Supabase backend alongside verified credentials.</p>
+      <div className="section-header-block" style={{ padding: '40px 40px 10px 40px', maxWidth: '1350px', margin: '0 auto' }}>
+        <h2 style={{ color: 'var(--text-primary)' }}>Portfolio & Milestones</h2>
+        <p className="section-subtitle" style={{ color: 'var(--text-secondary)' }}>Real-time dynamic data pulled from Supabase backend alongside verified credentials.</p>
       </div>
 
-      <div className="portfolio-tab-row">
+      <div className="portfolio-tab-row" style={{ maxWidth: '1350px', margin: '0 auto', padding: '0 40px 20px 40px' }}>
+        {/* Note: Your tab-btn active states will now automatically pair over the main theme colors */}
         <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => setActiveTab('all')}>Show All</button>
         <button className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`} onClick={() => setActiveTab('projects')}>Projects ({projects ? projects.length : 0})</button>
         <button className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`} onClick={() => setActiveTab('achievements')}>Achievements ({achievements.length})</button>
       </div>
 
-      {(activeTab === 'all' || activeTab === 'projects') && loading && <div className="loader">Loading dynamic portfolio items...</div>}
-      {(activeTab === 'all' || activeTab === 'projects') && error && <div className="error-msg">Error loading projects: {error}</div>}
+      {(activeTab === 'all' || activeTab === 'projects') && loading && <div className="loader" style={{ color: 'var(--text-secondary)', padding: '40px' }}>Loading dynamic portfolio items...</div>}
+      {(activeTab === 'all' || activeTab === 'projects') && error && <div className="error-msg" style={{ padding: '40px' }}>Error loading projects: {error}</div>}
 
-      <div className="portfolio-master-layout-grid">
+      <div className="portfolio-master-layout-grid" style={{ maxWidth: '1350px', margin: '0 auto', padding: '0 40px 40px 40px' }}>
 
         {(activeTab === 'all' || activeTab === 'projects') && !loading && !error && (
-          <div className="projects-sub-column">
-            {activeTab === 'all' && <h3>Featured Builds</h3>}
+          <div className="projects-sub-column" style={{ marginBottom: '32px' }}>
+            {activeTab === 'all' && <h3 style={{ color: 'var(--text-primary)', marginBottom: '16px' }}>Featured Builds</h3>}
             <div className="projects-grid">
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
@@ -137,9 +164,9 @@ const Projects = () => {
 
         {(activeTab === 'all' || activeTab === 'achievements') && (
           <div className="achievements-sub-column">
-            {activeTab === 'all' && <h3>Academic & Technical Milestones with SIL Internships</h3>}
+            {activeTab === 'all' && <h3 style={{ color: 'var(--text-primary)', marginBottom: '24px' }}>Academic & Technical Milestones with SIL Internships</h3>}
             
-            <div className="achievements-box-grid custom-3d-deck">
+            <div className="achievements-box-grid custom-3d-deck" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
               {achievements.map((item) => {
                 const isFlipped = flippedCardId === item.id;
 
@@ -148,13 +175,14 @@ const Projects = () => {
                     key={item.id} 
                     className="forced-perspective-container"
                     onClick={() => handleCardClick(item.id)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <div className={`forced-card-inner ${isFlipped ? 'is-flipped-active' : ''}`}>
                       
                       {/* FRONT VIEW PANEL */}
-                      <div className="forced-face-front flip-card-front supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div className="forced-face-front flip-card-front" style={{ padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                         <div>
-                          <div className="achievement-badge-row">
+                          <div className="achievement-badge-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                             <span className="badge-issuer">{item.issuer}</span>
                             <span className="badge-date">{item.date}</span>
                           </div>
@@ -165,8 +193,8 @@ const Projects = () => {
                           </div>
                         </div>
 
-                        <div className="achievement-status-footer action-hint-glow">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon animation-spin-icon">
+                        <div className="achievement-status-footer action-hint-glow" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'var(--brand-emerald)', marginTop: '12px' }}>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" style={{ width: '16px', height: '16px' }}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                           </svg>
                           <span>Click Card to view image document</span>
@@ -174,8 +202,9 @@ const Projects = () => {
                       </div>
 
                       {/* BACK VIEW PANEL */}
-                      <div className="forced-face-back flip-card-back supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '1.25rem' }}>
-                        <div className="achievement-image-wrapper" style={{ width: '100%', height: '260px', backgroundColor: 'rgba(0, 0, 0, 0.7)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                      <div className="forced-face-back flip-card-back" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '20px' }}>
+                        {/* 💡 CHANGED: Background box is set to dark theme asset containment natively */}
+                        <div className="achievement-image-wrapper" style={{ width: '100%', height: '260px', backgroundColor: '#09090b', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
                           <img 
                             src={item.image}
                             alt={item.title} 
@@ -185,8 +214,8 @@ const Projects = () => {
                           />
                         </div>
                         
-                        <div className="achievement-status-footer unflip-footer" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#4edf85' }}>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon green-glow" style={{ width: '16px', height: '16px' }}>
+                        <div className="achievement-status-footer unflip-footer" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: 'var(--brand-emerald)' }}>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" style={{ width: '16px', height: '16px' }}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <span>System Verified &bull; Click to exit view</span>

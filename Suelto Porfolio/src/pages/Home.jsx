@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import heroImg from '../assets/CarlSuelto.png'; 
+import heroImg from '../assets/CarlSuelto.png';
 
 const Home = () => {
   const phrases = [
@@ -45,26 +45,46 @@ const Home = () => {
   }, [displayedText, isDeleting, currentPhraseIndex]);
 
   return (
-    /* 💡 INTEGRATED: Added dynamic theme background and text variables here */
-    <section 
-      id="home" 
-      className="hero-section-fullscreen"
-      style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)' }}
-    >
-      {/* RESTORED: Original fluid container parameters */}
+    /* 💡 CHANGED: Main container monitors theme state background variables smoothly */
+    <section id="home" className="hero-section-fullscreen" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
+      
+      {/* 💡 CHANGED: Localized configuration to capture theme variables for subcomponents */}
+      <style>{`
+        .hero-title {
+          color: var(--text-primary) !important;
+        }
+        .hero-subtitle {
+          color: var(--text-secondary) !important;
+        }
+        .typewriter-paragraph {
+          color: var(--text-primary) !important;
+        }
+        .typed-text {
+          color: var(--brand-emerald) !important;
+          font-weight: 500;
+        }
+        .cursor {
+          color: var(--brand-emerald);
+          animation: blink 1s infinite;
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+      `}</style>
+
       <div className="hero-split-container">
         
         {/* LEFT COLUMN: Text and Actions */}
         <div className="hero-left-content">
-          {/* 💡 INTEGRATED: Applied explicit variables to text tags so theme color overrides work cleanly */}
-          <h1 className="hero-title" style={{ color: 'var(--text-primary)' }}>
+          <h1 className="hero-title">
             Hello there, <span className="highlight" style={{ color: 'var(--brand-emerald)' }}>Carl Vincent</span> here.
           </h1>
-          <h2 className="hero-subtitle" style={{ color: 'var(--text-secondary)' }}> a Diploma Student</h2>
+          <h2 className="hero-subtitle"> a Diploma Student</h2>
           
-          <p className="typewriter-paragraph" style={{ color: 'var(--text-secondary)' }}>
-            I am <span className="typed-text" style={{ color: 'var(--brand-emerald)' }}>{displayedText}</span>
-            <span className="cursor" style={{ color: 'var(--brand-emerald)' }}>|</span>
+          <p className="typewriter-paragraph">
+            I am <span className="typed-text">{displayedText}</span>
+            <span className="cursor">|</span>
           </p>
 
           <div className="hero-actions">
@@ -81,15 +101,15 @@ const Home = () => {
             display: 'flex', 
             justifyContent: 'center', 
             alignItems: 'center',
-            paddingRight: '10%' // 👈 Nudges the picture inwards away from the far-right monitor edge
+            paddingRight: '10%'
           }}
         >
           <div className="profile-card-wrapper circular-variant">
+            {/* 💡 CHANGED: Replaced hardcoded box shadow colors with alpha variable matching */}
             <div 
               className="profile-glow-container"
               style={{
                 position: 'relative',
-                /* ENLARGED: Max cap bumped to 400px and responsive base viewport width increased to 32vw */
                 width: 'clamp(280px, 32vw, 400px)',  
                 height: 'clamp(280px, 32vw, 400px)', 
                 borderRadius: '50%',
@@ -97,10 +117,9 @@ const Home = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                /* 💡 INTEGRATED: Swapped static values for borders, background cards, and adaptive glow drop-shadows */
-                border: '2px solid var(--border-accent)', 
-                backgroundColor: 'var(--bg-card)',
-                boxShadow: '0 0 45px var(--border-accent), 0 20px 40px rgba(0, 0, 0, 0.25)'
+                border: '2px solid var(--border-subtle)',
+                boxShadow: '0 0 45px rgba(62, 207, 142, 0.15), 0 20px 40px rgba(0, 0, 0, 0.15)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
               }}
             >
               <img 
