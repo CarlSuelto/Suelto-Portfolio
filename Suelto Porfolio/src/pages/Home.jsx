@@ -70,12 +70,13 @@ const Home = () => {
         {/* RIGHT COLUMN: Updated Circular Supabase-style Avatar Box */}
         <div className="hero-right-image">
           <div className="profile-card-wrapper circular-variant">
-            <div className="profile-image-container circular-mask">
+            <div className="profile-glow-container">
               <img 
-                src={heroImg} 
-                alt="Carl Vincent" 
-                className="profile-avatar" 
+                src="path-to-your-profile-image.png" 
+                alt="Carl Vincent Profile" 
+                className="profile-image-avatar"
               />
+
               <div className="radar-scanner-ring"></div>
             </div>
           </div>
