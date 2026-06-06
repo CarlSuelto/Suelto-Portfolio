@@ -22,15 +22,21 @@ const Navbar = () => {
           <li><a href="#contact" className="nav-item" style={{ color: 'var(--text-primary)' }}>Contact</a></li>
         </ul>
         
-        <ThemeToggle />
-        
-        {/* Action Button */}
-        <a href="#footer" className="btn-primary-supabase hire-me-nav-btn">
-          <span>Hire Me</span>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="14" height="14">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-          </svg>
-        </a>
+        {/* 💡 CHANGED: Repositioned elements inside a flex wrapper to swap their order */}
+        <div className="nav-actions-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          
+          {/* 1. Action Button ("Hire Me" is now on the left) */}
+          <a href="#footer" className="btn-primary-supabase hire-me-nav-btn">
+            <span>Hire Me</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="14" height="14">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
+          </a>
+
+          {/* 2. Theme Toggle (Now on the far right edge) */}
+          <ThemeToggle />
+          
+        </div>
       </div>
     </nav>
   );
