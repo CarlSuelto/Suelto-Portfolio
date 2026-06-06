@@ -142,26 +142,27 @@ const Projects = () => {
                           <span>Click Card to view image document</span>
                         </div>
                       </div>
-
-                      {/* BACK VIEW PANEL */}
-                      <div className="flip-card-back supabase-card achievement-item-card">
-                        <div className="achievement-image-wrapper">
-                          <img 
-                            src={item.image}
-                            alt={item.title} 
-                            className="achievement-card-img" 
-                            loading="lazy"
-                          />
-                        </div>
-                        
-                        <div className="achievement-status-footer unflip-footer">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon green-glow">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span>System Verified &bull; Click to exit view</span>
-                        </div>
-                      </div>
-
+                {/* BACK VIEW PANEL */}
+                          <div className="flip-card-back supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', justifyContent: 'space-between', padding: '1.25rem', boxSizing: 'border-box' }}>
+                            
+                            {/* FORCED CANVAS DIMENSIONS */}
+                            <div className="achievement-image-wrapper" style={{ width: '100%', height: '250px', backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                              <img 
+                                src={item.image}
+                                alt={item.title} 
+                                className="achievement-card-img" 
+                                loading="lazy"
+                                style={{ width: '100%', height: '100%', maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
+                              />
+                            </div>
+                            
+                            <div className="achievement-status-footer unflip-footer" style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '1rem', fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon green-glow" style={{ width: '16px', height: '16px' }}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span>System Verified &bull; Click to exit view</span>
+                            </div>
+                          </div>
                     </div>
                   </div>
                 );
