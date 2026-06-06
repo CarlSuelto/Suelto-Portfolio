@@ -51,8 +51,8 @@ const Contact = () => {
   return (
     <section id="contact" className="contact-section">
       <div className="section-header-block">
-        <h2>Get In Touch</h2>
-        <p className="section-subtitle">Drop a message into the database pipeline. I'll get back to you shortly.</p>
+      <h2>Get In Touch</h2>
+      <p className="section-subtitle">Have a project in mind or a question? Drop a message into the pipeline!</p>
       </div>
 
       <div className="contact-container-centered">
@@ -65,11 +65,11 @@ const Contact = () => {
               </svg>
             </div>
             <div className="banner-text-content">
-              <h4>Transmission Successful</h4>
-              <p>Thank you! Your message has been written to the backend successfully.</p>
+              <h4>I got you!</h4>
+              <p> Much obliged! The message has been written to the memory successfully.</p>
             </div>
             <button onClick={() => setSubmitted(false)} className="banner-reset-btn">
-             Got another concern? Ask away!
+             Got another concern? Ask out 
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="16" height="16">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
               </svg>
