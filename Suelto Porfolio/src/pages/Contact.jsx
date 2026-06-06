@@ -16,43 +16,47 @@ const Contact = () => {
     e.preventDefault();
     setErrorMessage('');
     
-    if (name.trim() && email.trim() && message.trim()) {
-      setLoading(true);
-      
-      try {
-        /* 🚀 CONNECTED: Inserting the form payload straight into your database */
-        // 🔴 UPDATE APPLIED HERE: Using exact database column keys (full_name and email_address)
-        const { error } = await supabase
-          .from('contact_messages')
-          .insert([
-            { 
-              full_name: name.trim(), 
-              email_address: email.trim(), 
-              message: message.trim() 
-            }
-          ]);
+    // 🟢 JavaScript Guard Clause: Catch blank strings/whitespace entries explicitly
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setErrorMessage('Validation Failure: All fields are strictly required before transmission.');
+      return;
+    }
 
-        if (error) throw error;
+    setLoading(true);
+    
+    try {
+      /* 🚀 CONNECTED: Inserting the form payload straight into your database */
+      // Using exact database column keys (full_name and email_address)
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          { 
+            full_name: name.trim(), 
+            email_address: email.trim(), 
+            message: message.trim() 
+          }
+        ]);
 
-        // Transmission successful: reset states
-        setSubmitted(true);
-        setName('');
-        setEmail('');
-        setMessage('');
-      } catch (error) {
-        console.error('Database insertion breakdown:', error.message);
-        setErrorMessage(error.message || 'Transmission failed. Pipeline connection lost.');
-      } finally {
-        setLoading(false); // Clean and clear!
-      }
+      if (error) throw error;
+
+      // Transmission successful: reset states
+      setSubmitted(true);
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      console.error('Database insertion breakdown:', error.message);
+      setErrorMessage(error.message || 'Transmission failed. Pipeline connection lost.');
+    } finally {
+      setLoading(false); // Clean and clear!
     }
   };
 
   return (
     <section id="contact" className="contact-section">
       <div className="section-header-block">
-      <h2>Get In Touch</h2>
-      <p className="section-subtitle">Have a project in mind or a question? Drop a message into the pipeline!</p>
+        <h2>Get In Touch</h2>
+        <p className="section-subtitle">Have a project in mind or a question? Drop a message into the pipeline!</p>
       </div>
 
       <div className="contact-container-centered">
@@ -65,15 +69,15 @@ const Contact = () => {
               </svg>
             </div>
             <div className="banner-text-content">
-              <h4>I got you!</h4>
-              <p> Much obliged! The message has been written to the memory successfully.</p>
+              <h4> Loud and clear! </h4>
+              <p> Entry written successfully. Connection established! </p>
             </div>
             <button onClick={() => setSubmitted(false)} className="banner-reset-btn">
-             Got another concern? Ask out 
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="16" height="16">
+              Need further assistance?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="16" height="16">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
               </svg>
-             </button>
+            </button>
           </div>
         ) : (
           /* Interactive Input Form housed inside a signature dashboard card block */
