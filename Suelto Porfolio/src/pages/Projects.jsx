@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
-import responsiveWebImg from '/Responsive web.png';
-import nciiCssImg from '/NCII CSS.png';
-import nciiiEmsImg from '/NCIII EMS.png';
-import objProImg from '/OBJ Pro.png';
-
 
 const Projects = () => {
   const { projects, loading, error } = useFetchProjects();
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'projects', 'achievements'
   
-  /* 🟢 NEW STATE: Tracks which individual card is currently flipped over */
+  /* Tracks which individual card is currently flipped over */
   const [flippedCardId, setFlippedCardId] = useState(null);
 
   const handleCardClick = (id) => {
@@ -25,7 +20,7 @@ const Projects = () => {
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
-      image: '/Responsive web.png', // 🟢 Matches your folder exactly!
+      image: '/Responsive web.png',
       description: 'This course teaches the fundamentals of HTML and CSS including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
     },
     {
@@ -33,7 +28,7 @@ const Projects = () => {
       title: 'Computer Systems Servicing NC II',
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
-      image: '/NCII CSS.png', // 🟢 Matches your folder exactly!
+      image: '/NCII CSS.png',
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
@@ -41,7 +36,7 @@ const Projects = () => {
       title: 'Events Management Services NC III',
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
-      image: '/NCIII EMS.png', // 🟢 Matches your folder exactly!
+      image: '/NCIII EMS.png',
       description: 'Demonstrated 4 core competencies in event planning and coordination for successful event execution.'
     },
     {
@@ -49,10 +44,11 @@ const Projects = () => {
       title: 'OOPs in Java Programming Certification',
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
-      image: '/OBJ Pro.png', // 🟢 Matches your folder exactly!
+      image: '/OBJ Pro.png',
       description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
   ];
+
   return (
     <section id="projects" className="projects-section">
       <div className="section-header-block">
@@ -110,7 +106,6 @@ const Projects = () => {
           <div className="achievements-sub-column">
             {activeTab === 'all' && <h3>Academic & Technical Milestones</h3>}
             
-            {/* 🟢 UPGRADED CONTAINER LAYER FOR 3D PERSPECTIVE */}
             <div className="achievements-box-grid custom-3d-deck">
               {achievements.map((item) => {
                 const isFlipped = flippedCardId === item.id;
@@ -125,7 +120,7 @@ const Projects = () => {
                       
                       {/* ==========================================
                           FRONT VIEW: Metadata Details Panel 
-                         ========================================== */}
+                          ========================================== */}
                       <div className="flip-card-front supabase-card achievement-item-card">
                         <div className="achievement-badge-row">
                           <span className="badge-issuer">{item.issuer}</span>
@@ -147,11 +142,11 @@ const Projects = () => {
 
                       {/* ==========================================
                           BACK VIEW: Full Document Image Render Plane 
-                         ========================================== */}
+                          ========================================== */}
                       <div className="flip-card-back supabase-card achievement-item-card">
                         <div className="achievement-image-wrapper">
                           <img 
-                            src={item.image || '/Responsive web.png'}
+                            src={item.image}
                             alt={item.title} 
                             className="achievement-card-img" 
                             loading="lazy"
@@ -166,7 +161,7 @@ const Projects = () => {
                         </div>
                       </div>
 
-                    </div>
+                    </div> {/* Closes flip-card-inner */}
                   </div>
                 );
               })}

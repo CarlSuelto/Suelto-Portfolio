@@ -6,32 +6,32 @@ import React, { useState } from 'react';
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
-      image: responsiveWebImg, // 🟢 Pointing to the variable now
-      description: 'This course teaches the fundamentals of HTML and CSS, including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
+      image: '/Responsive web.png', // 🟢 Fixed to plain path string
+      description: 'This course teaches the fundamentals of HTML and CSS...'
     },
     {
       id: 'ach-2',
       title: 'Computer Systems Servicing NC II',
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
-      image: nciiCssImg, // 🟢 Pointing to the variable now
-      description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
+      image: '/NCII CSS.png', // 🟢 Fixed to plain path string
+      description: 'Demonstrated 4 core competencies...'
     },
     {
       id: 'ach-3',
       title: 'Events Management Services NC III',
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
-      image: nciiiEmsImg, // 🟢 Pointing to the variable now
-      description: 'Demonstrated 4 core competencies in event planning, logistics coordination, and client communication for successful event execution.'
+      image: '/NCIII EMS.png', // 🟢 Fixed to plain path string
+      description: 'Demonstrated 4 core competencies...'
     },
     {
       id: 'ach-4',
       title: 'OOPs in Java Programming Certification',
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
-      image: objProImg, // 🟢 Pointing to the variable now
-      description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
+      image: '/OBJ Pro.png', // 🟢 Fixed to plain path string
+      description: 'Mastered the principles...'
     },
   ];
 const Achievements = () => {
