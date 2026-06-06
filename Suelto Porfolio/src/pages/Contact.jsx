@@ -21,12 +21,13 @@ const Contact = () => {
       
       try {
         /* 🚀 CONNECTED: Inserting the form payload straight into your database */
+        // 🔴 UPDATE APPLIED HERE: Using exact database column keys (full_name and email_address)
         const { error } = await supabase
           .from('contact_messages')
           .insert([
             { 
-              name: name.trim(), 
-              email: email.trim(), 
+              full_name: name.trim(), 
+              email_address: email.trim(), 
               message: message.trim() 
             }
           ]);
@@ -42,6 +43,7 @@ const Contact = () => {
         console.error('Database insertion breakdown:', error.message);
         setErrorMessage(error.message || 'Transmission failed. Pipeline connection lost.');
       } finally {
+        box-sizing: border-box;
         setLoading(false);
       }
     }
