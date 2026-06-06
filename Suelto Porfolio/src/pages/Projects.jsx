@@ -62,14 +62,6 @@ const Projects = () => {
     },
     {
       id: 'ach-7',
-      title: 'SIL (Job Internship)',
-      issuer: 'Inspiro & Infocom',
-      date: 'Completed - August 2025',
-      image: '/inspiro.png', 
-      description: 'Successfully completed a 200 hrs SIL (Supervised Industry Learning) internship at Inspiro & Infocom, gaining hands-on experience in IT support, network administration, and system maintenance.'
-    },
-    {
-      id: 'ach-7',
       title: 'Search Engine Optimization (SEO) Seminar',
       issuer: 'Asian College of Science and Technology under CCSE dept.',
       date: 'Completed - April 2024',
