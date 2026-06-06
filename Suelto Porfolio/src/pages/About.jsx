@@ -54,19 +54,25 @@ const About = () => {
     }
   ];
 
-  /* 🛠️ Expanded technology dataset for the marquee carousel track */
+  /* 🛠️ Technology dataset for marquee track */
   const techStack = [
     'React.js', 'JavaScript', 'Supabase', 'PostgreSQL', 
     'HTML5', 'CSS3', 'Git/GitHub', 'REST APIs', 
     'Vite', 'Node.js', 'UI/UX Design', 'Responsive Web'
   ];
 
-  /* 🎨 Hobbies dataset with clean, custom SVG badges */
+  /* 🎨 Expanded Hobbies Dataset with dynamic local file support */
   const hobbies = [
-    { name: 'Coding & Open Source', icon: '💻' },
-    { name: 'UI Animation Experiments', icon: '✨' },
-    { name: 'Gaming & Tech Hardware', icon: '🎮' },
-    { name: 'Exploring Cloud Architecture', icon: '☁️' }
+    { 
+      title: 'Coding Experiments', 
+      category: 'Development', 
+      imgSrc: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=400&q=80' // Replace with your own path or asset link
+    },
+    { 
+      title: 'Setup & Hardware', 
+      category: 'Tech Enthusiast', 
+      imgSrc: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80' // Replace with your own path or asset link
+    }
   ];
 
   return (
@@ -151,7 +157,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Row 2: Metrics and Academic Background Info Boxes */}
+      {/* Row 2: Metrics, Academic Background, and Hobbies Media Grid */}
       <div className="about-grid secondary-info-grid">
         {/* Box A: Highlight metrics tracking dashboard stats */}
         <div className="supabase-card metrics-box">
@@ -182,31 +188,52 @@ const About = () => {
           </div>
         </div>
 
-        {/* 🟢 NEW ADDITION: Hobbies & Creative Outlets Tab Section */}
+        {/* 🟢 UPGRADED IMAGE TAB: Hobbies Media Showcase Deck */}
         <div className="supabase-card hobbies-box">
           <h3>Hobbies & Outlets</h3>
-          <p style={{ fontSize: '0.9rem', color: '#a1a1aa', marginBottom: '12px' }}>
-            What keeps me inspired and engaged outside of formal coursework structures:
+          <p style={{ fontSize: '0.9rem', color: '#a1a1aa', marginBottom: '14px' }}>
+            What drives my creativity outside of formal coding curriculum parameters:
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          
+          {/* Sub-grid wrapping the visual hobby frame cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             {hobbies.map((hobby, index) => (
               <div 
                 key={index} 
-                className="hobby-tag"
+                className="hobby-image-card"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  position: 'relative',
+                  height: '110px',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '20px',
-                  padding: '6px 14px',
-                  fontSize: '0.85rem',
-                  color: '#e4e4e7'
+                  backgroundColor: '#18181b'
                 }}
               >
-                <span>{hobby.icon}</span>
-                <span>{hobby.name}</span>
+                <img 
+                  src={hobby.imgSrc} 
+                  alt={hobby.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.4s ease'
+                  }}
+                  className="hobby-card-img"
+                />
+                {/* Clean dark title gradient cover over bottom half of card */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(10, 10, 10, 0.95) 20%, rgba(0, 0, 0, 0.2) 100%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  padding: '10px'
+                }}>
+                  <span style={{ fontSize: '0.7rem', color: '#3ecf8e', textTransform: 'uppercase', fontWeight: 'bold', trackingLetter: '0.05em' }}>{hobby.category}</span>
+                  <h4 style={{ fontSize: '0.85rem', color: '#ffffff', margin: '2px 0 0 0', fontWeight: '500' }}>{hobby.title}</h4>
+                </div>
               </div>
             ))}
           </div>

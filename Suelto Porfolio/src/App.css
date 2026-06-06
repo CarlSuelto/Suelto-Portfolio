@@ -918,10 +918,12 @@ code {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--badge-glow);
 }
-/* ==========================================================================
-   UPGRADED NAVBAR & HIRE ME UTILITIES
-   ========================================================================== */
 
+/* ================================================================================= */
+/* Triggers zoom on the image inside the hobby container frame */
+.hobby-image-card:hover .hobby-card-img {
+  transform: scale(1.08);
+}
 
 /* ==========================================================================
    MINIMALIST SUPABASE-THEMED FOOTER STYLES
