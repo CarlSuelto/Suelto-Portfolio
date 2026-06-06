@@ -54,11 +54,19 @@ const About = () => {
     }
   ];
 
-  /* 🛠️ NEW: Expanded technology dataset for the marquee carousel track */
+  /* 🛠️ Expanded technology dataset for the marquee carousel track */
   const techStack = [
     'React.js', 'JavaScript', 'Supabase', 'PostgreSQL', 
     'HTML5', 'CSS3', 'Git/GitHub', 'REST APIs', 
     'Vite', 'Node.js', 'UI/UX Design', 'Responsive Web'
+  ];
+
+  /* 🎨 Hobbies dataset with clean, custom SVG badges */
+  const hobbies = [
+    { name: 'Coding & Open Source', icon: '💻' },
+    { name: 'UI Animation Experiments', icon: '✨' },
+    { name: 'Gaming & Tech Hardware', icon: '🎮' },
+    { name: 'Exploring Cloud Architecture', icon: '☁️' }
   ];
 
   return (
@@ -87,64 +95,61 @@ const About = () => {
         </div>
       </div>
 
-     {/* 🚀 UPGRADED: Infinite Sliding Tech Stack Carousel with Brand Colors */}
-<div className="supabase-card carousel-section-card">
-  <h3>Technical Ecosystem and Skills Set</h3>
-  <div className="tech-carousel-viewport">
-    <div className="tech-carousel-track">
-      {/* Function to dynamically generate brand colors based on the tech name */}
-      {(() => {
-        const getColorStyles = (tech) => {
-          switch (tech.toLowerCase()) {
-            case 'react.js':
-            case 'vite':
-              return { '--badge-glow': 'rgba(97, 218, 251, 0.1)', '--badge-text': '#61dafb' };
-            case 'javascript':
-              return { '--badge-glow': 'rgba(247, 223, 30, 0.1)', '--badge-text': '#f7df1e' };
-            case 'supabase':
-            case 'postgresql':
-              return { '--badge-glow': 'rgba(62, 207, 142, 0.1)', '--badge-text': '#3ecf8e' };
-            case 'html5':
-              return { '--badge-glow': 'rgba(227, 79, 38, 0.1)', '--badge-text': '#e34f26' };
-            case 'css3':
-              return { '--badge-glow': 'rgba(21, 114, 182, 0.1)', '--badge-text': '#1572b6' };
-            case 'git/github':
-              return { '--badge-glow': 'rgba(240, 80, 51, 0.1)', '--badge-text': '#f05033' };
-            case 'node.js':
-              return { '--badge-glow': 'rgba(104, 160, 99, 0.1)', '--badge-text': '#68a063' };
-            default:
-              // Cyan/Teal glow default for general skills like UI/UX or REST APIs
-              return { '--badge-glow': 'rgba(45, 212, 191, 0.1)', '--badge-text': '#2dd4bf' };
-          }
-        };
+      {/* 🚀 Infinite Sliding Tech Stack Carousel with Brand Colors */}
+      <div className="supabase-card carousel-section-card">
+        <h3>Technical Ecosystem and Skills Set</h3>
+        <div className="tech-carousel-viewport">
+          <div className="tech-carousel-track">
+            {(() => {
+              const getColorStyles = (tech) => {
+                switch (tech.toLowerCase()) {
+                  case 'react.js':
+                  case 'vite':
+                    return { '--badge-glow': 'rgba(97, 218, 251, 0.1)', '--badge-text': '#61dafb' };
+                  case 'javascript':
+                    return { '--badge-glow': 'rgba(247, 223, 30, 0.1)', '--badge-text': '#f7df1e' };
+                  case 'supabase':
+                  case 'postgresql':
+                    return { '--badge-glow': 'rgba(62, 207, 142, 0.1)', '--badge-text': '#3ecf8e' };
+                  case 'html5':
+                    return { '--badge-glow': 'rgba(227, 79, 38, 0.1)', '--badge-text': '#e34f26' };
+                  case 'css3':
+                    return { '--badge-glow': 'rgba(21, 114, 182, 0.1)', '--badge-text': '#1572b6' };
+                  case 'git/github':
+                    return { '--badge-glow': 'rgba(240, 80, 51, 0.1)', '--badge-text': '#f05033' };
+                  case 'node.js':
+                    return { '--badge-glow': 'rgba(104, 160, 99, 0.1)', '--badge-text': '#68a063' };
+                  default:
+                    return { '--badge-glow': 'rgba(45, 212, 191, 0.1)', '--badge-text': '#2dd4bf' };
+                }
+              };
 
-        // Render the double tracks for seamless looping
-        return (
-          <>
-            {techStack.map((tech, i) => (
-              <div 
-                key={`track1-${i}`} 
-                className="tech-badge color-aware" 
-                style={getColorStyles(tech)}
-              >
-                <code>{tech}</code>
-              </div>
-            ))}
-            {techStack.map((tech, i) => (
-              <div 
-                key={`track2-${i}`} 
-                className="tech-badge color-aware" 
-                style={getColorStyles(tech)}
-              >
-                <code>{tech}</code>
-              </div>
-            ))}
-          </>
-        );
-      })()}
-    </div>
-  </div>
-</div>
+              return (
+                <>
+                  {techStack.map((tech, i) => (
+                    <div 
+                      key={`track1-${i}`} 
+                      className="tech-badge color-aware" 
+                      style={getColorStyles(tech)}
+                    >
+                      <code>{tech}</code>
+                    </div>
+                  ))}
+                  {techStack.map((tech, i) => (
+                    <div 
+                      key={`track2-${i}`} 
+                      className="tech-badge color-aware" 
+                      style={getColorStyles(tech)}
+                    >
+                      <code>{tech}</code>
+                    </div>
+                  ))}
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      </div>
 
       {/* Row 2: Metrics and Academic Background Info Boxes */}
       <div className="about-grid secondary-info-grid">
@@ -174,6 +179,36 @@ const About = () => {
               </div>
               <p className="node-desc">Department of Information Technology — pursuing modern computing systems architecture, databases, and structural coding practices.</p>
             </div>
+          </div>
+        </div>
+
+        {/* 🟢 NEW ADDITION: Hobbies & Creative Outlets Tab Section */}
+        <div className="supabase-card hobbies-box">
+          <h3>Hobbies & Outlets</h3>
+          <p style={{ fontSize: '0.9rem', color: '#a1a1aa', marginBottom: '12px' }}>
+            What keeps me inspired and engaged outside of formal coursework structures:
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {hobbies.map((hobby, index) => (
+              <div 
+                key={index} 
+                className="hobby-tag"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '20px',
+                  padding: '6px 14px',
+                  fontSize: '0.85rem',
+                  color: '#e4e4e7'
+                }}
+              >
+                <span>{hobby.icon}</span>
+                <span>{hobby.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
