@@ -50,6 +50,14 @@ const Achievements = () => {
       image: '/inspiro.png', 
       description: 'Successfully completed a 200 hrs SIL (Supervised Industry Learning) internship at Inspiro & Infocom, gaining hands-on experience in IT support, network administration, and system maintenance.'
     },
+    {
+      id: 'ach-7',
+      title: 'Search Engine Optimization (SEO) Seminar',
+      issuer: 'Asian College of Science and Technology under CCSE dept.',
+      date: 'Completed - April 2024',
+      image: '/seo.png', 
+      description: 'Attended a comprehensive seminar on Search Engine Optimization (SEO) covering keyword research, on-page and off-page optimization techniques, and SEO analytics tools to enhance website visibility and ranking.'
+    },
   ];
 
   const [flippedCardId, setFlippedCardId] = useState(null);
