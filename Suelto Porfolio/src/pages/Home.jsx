@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// Import your hero image from your assets folder
 import heroImg from '../assets/CarlSuelto.png'; 
 
 const Home = () => {
@@ -77,7 +76,6 @@ const Home = () => {
                 alt="Carl Vincent" 
                 className="profile-avatar" 
               />
-              {/* Overlay element to create a precision geometric radar border */}
               <div className="radar-scanner-ring"></div>
             </div>
           </div>
