@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFetchProjects } from '../hooks/useFetchProjects';
 import ProjectCard from '../components/ProjectCard';
 
-/* 🟢 FORCED IMPORTS: This tells Vite to bypass asset security rules and load the images directly */
+/* FORCED IMPORTS: Resolves any internal Vite compilation asset parsing issues */
 import responsiveWebImg from '../../public/Responsive web.png';
 import nciiCssImg from '../../public/NCII CSS.png';
 import nciiiEmsImg from '../../public/NCIII EMS.png';
@@ -10,9 +10,7 @@ import objProImg from '../../public/OBJ Pro.png';
 
 const Projects = () => {
   const { projects, loading, error } = useFetchProjects();
-  const [activeTab, setActiveTab] = useState('all'); // 'all', 'projects', 'achievements'
-  
-  /* Tracks which individual card is currently flipped over */
+  const [activeTab, setActiveTab] = useState('all'); 
   const [flippedCardId, setFlippedCardId] = useState(null);
 
   const handleCardClick = (id) => {
@@ -25,7 +23,7 @@ const Projects = () => {
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
-      image: responsiveWebImg, // 🟢 Now uses the forced asset handle
+      image: responsiveWebImg, 
       description: 'This course teaches the fundamentals of HTML and CSS including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
     },
     {
@@ -33,7 +31,7 @@ const Projects = () => {
       title: 'Computer Systems Servicing NC II',
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
-      image: nciiCssImg, // 🟢 Now uses the forced asset handle
+      image: nciiCssImg, 
       description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
@@ -41,7 +39,7 @@ const Projects = () => {
       title: 'Events Management Services NC III',
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
-      image: nciiiEmsImg, // 🟢 Now uses the forced asset handle
+      image: nciiiEmsImg, 
       description: 'Demonstrated 4 core competencies in event planning and coordination for successful event execution.'
     },
     {
@@ -49,7 +47,7 @@ const Projects = () => {
       title: 'OOPs in Java Programming Certification',
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
-      image: objProImg, // 🟢 Now uses the forced asset handle
+      image: objProImg, 
       description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
   ];
@@ -63,35 +61,15 @@ const Projects = () => {
 
       {/* Control Tabs */}
       <div className="portfolio-tab-row">
-        <button 
-          className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`}
-          onClick={() => setActiveTab('all')}
-        >
-          Show All
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`}
-          onClick={() => setActiveTab('projects')}
-        >
-          Projects ({projects ? projects.length : 0})
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`}
-          onClick={() => setActiveTab('achievements')}
-        >
-          Achievements ({achievements.length})
-        </button>
+        <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => setActiveTab('all')}>Show All</button>
+        <button className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`} onClick={() => setActiveTab('projects')}>Projects ({projects ? projects.length : 0})</button>
+        <button className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`} onClick={() => setActiveTab('achievements')}>Achievements ({achievements.length})</button>
       </div>
 
       {/* LOADING/ERROR HANDLERS */}
-      {(activeTab === 'all' || activeTab === 'projects') && loading && (
-        <div className="loader">Loading dynamic portfolio items...</div>
-      )}
-      {(activeTab === 'all' || activeTab === 'projects') && error && (
-        <div className="error-msg">Error loading projects: {error}</div>
-      )}
+      {(activeTab === 'all' || activeTab === 'projects') && loading && <div className="loader">Loading dynamic portfolio items...</div>}
+      {(activeTab === 'all' || activeTab === 'projects') && error && <div className="error-msg">Error loading projects: {error}</div>}
 
-      {/* SYSTEM GRID DISPLAY */}
       <div className="portfolio-master-layout-grid">
         
         {/* Dynamic Project Streams */}
@@ -142,28 +120,28 @@ const Projects = () => {
                           <span>Click Card to view image document</span>
                         </div>
                       </div>
-                {/* BACK VIEW PANEL */}
-                          <div className="flip-card-back supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', justifyContent: 'space-between', padding: '1.25rem', boxSizing: 'border-box' }}>
-                            
-                            {/* FORCED CANVAS DIMENSIONS */}
-                            <div className="achievement-image-wrapper" style={{ width: '100%', height: '250px', backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                              <img 
-                                src={item.image}
-                                alt={item.title} 
-                                className="achievement-card-img" 
-                                loading="lazy"
-                                style={{ width: '100%', height: '100%', maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
-                              />
-                            </div>
-                            
-                            <div className="achievement-status-footer unflip-footer" style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '1rem', fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.4)' }}>
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon green-glow" style={{ width: '16px', height: '16px' }}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span>System Verified &bull; Click to exit view</span>
-                            </div>
-                          </div>
-                    </div>
+
+                      {/* 🟢 BACK VIEW PANEL: Properly closed and aligned inside flip-card-inner */}
+                      <div className="flip-card-back supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', justifyContent: 'space-between', padding: '1.25rem', boxSizing: 'border-box' }}>
+                        <div className="achievement-image-wrapper" style={{ width: '100%', height: '250px', backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                          <img 
+                            src={item.image}
+                            alt={item.title} 
+                            className="achievement-card-img" 
+                            loading="lazy"
+                            style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+                          />
+                        </div>
+                        
+                        <div className="achievement-status-footer unflip-footer" style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '1rem', fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="verified-icon green-glow" style={{ width: '16px', height: '16px' }}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span>System Verified &bull; Click to exit view</span>
+                        </div>
+                      </div>
+
+                    </div> {/* Closes flip-card-inner */}
                   </div>
                 );
               })}

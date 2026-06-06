@@ -1,45 +1,46 @@
 import React, { useState } from 'react';
-// Hardcoded achievements data array following your profile's data structures
+
+const Achievements = () => {
+  // 🟢 MOVED INSIDE THE COMPONENT: Keeps the static strings stable within the render cycle
   const achievements = [
     {
       id: 'ach-1',
       title: 'Responsive Web Design Certification',
       issuer: 'FREECODECAMP',
       date: 'Certified - 2025',
-      image: '/Responsive web.png', // 🟢 Fixed to plain path string
-      description: 'This course teaches the fundamentals of HTML and CSS...'
+      image: '/Responsive web.png', 
+      description: 'This course teaches the fundamentals of HTML and CSS including modern layout, design, accessibility, and responsive web development. You will build practical projects and gain the skills to create professional, user-friendly webpages.'
     },
     {
       id: 'ach-2',
       title: 'Computer Systems Servicing NC II',
       issuer: 'CSS NC II',
       date: 'Completed - 2026',
-      image: '/NCII CSS.png', // 🟢 Fixed to plain path string
-      description: 'Demonstrated 4 core competencies...'
+      image: '/NCII CSS.png', 
+      description: 'Demonstrated 4 core competencies in setting up computer networks, configuring servers, and maintaining hardware systems infrastructure.'
     },
     {
       id: 'ach-3',
       title: 'Events Management Services NC III',
       issuer: 'EMS NC III',
       date: 'Completed - 2024',
-      image: '/NCIII EMS.png', // 🟢 Fixed to plain path string
-      description: 'Demonstrated 4 core competencies...'
+      image: '/NCIII EMS.png', 
+      description: 'Demonstrated 4 core competencies in event planning and coordination for successful event execution.'
     },
     {
       id: 'ach-4',
       title: 'OOPs in Java Programming Certification',
       issuer: 'OBJECTIVE PROGRAMMING',
       date: 'Completed - Nov 2025',
-      image: '/OBJ Pro.png', // 🟢 Fixed to plain path string
-      description: 'Mastered the principles...'
+      image: '/OBJ Pro.png', 
+      description: 'Mastered the principles of object-oriented programming in Java, including encapsulation, inheritance, and polymorphism.'
     },
   ];
-const Achievements = () => {
+
   // Track which card is currently flipped
   const [flippedCardId, setFlippedCardId] = useState(null);
 
   const handleCardClick = (id) => {
-    // If clicked card is already flipped, unflip it. Otherwise flip the new one.
     setFlippedCardId(flippedCardId === id ? null : id);
   };
 
@@ -81,12 +82,13 @@ const Achievements = () => {
 
                 {/* BACK FACE: Image Display Plane */}
                 <div className="flip-card-back supabase-card">
-                  <div className="image-wrapper">
+                  <div className="image-wrapper" style={{ width: '100%', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                     <img 
                       src={ach.image} 
                       alt={`${ach.title} Document`} 
                       loading="lazy"
                       className="credential-img"
+                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                     />
                   </div>
                   <div className="back-footer-overlay">
