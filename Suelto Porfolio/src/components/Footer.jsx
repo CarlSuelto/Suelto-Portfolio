@@ -49,8 +49,6 @@ const Footer = () => {
         </div>
 
         <div className="footer-divider-line"></div>
-
-        {/* Bottom Section containing License and Copyright strings */}
         <div className="footer-bottom-flex">
           <p className="copyright-text">
             &copy; {currentYear} Carl Vincent B. Suelto. All rights reserved.
