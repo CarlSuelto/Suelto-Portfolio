@@ -11,7 +11,6 @@ const Projects = () => {
     setFlippedCardId(flippedCardId === id ? null : id);
   };
 
-  // 🟢 CLEAN STRING PATHS: No imports at the top!
   const achievements = [
     {
       id: 'ach-1',
@@ -93,11 +92,35 @@ const Projects = () => {
                     key={item.id} 
                     className={`flip-card-container ${isFlipped ? 'is-flipped' : ''}`}
                     onClick={() => handleCardClick(item.id)}
+                    style={{ perspective: '1000px' }} // Ensures standard container perspective
                   >
-                    <div className="flip-card-inner">
+                    <div 
+                      className="flip-card-inner"
+                      style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                        transformStyle: 'preserve-3d',
+                        transition: 'transform 0.6s ease',
+                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                      }}
+                    >
                       
                       {/* FRONT VIEW PANEL */}
-                      <div className="flip-card-front supabase-card achievement-item-card">
+                      <div 
+                        className="flip-card-front supabase-card achievement-item-card"
+                        style={{
+                          backfaceVisibility: 'hidden',
+                          WebkitBackfaceVisibility: 'hidden',
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          zIndex: isFlipped ? 1 : 2, // Forces front panel behind when flipped
+                          visibility: isFlipped ? 'hidden' : 'visible' // Absolute safety switch
+                        }}
+                      >
                         <div className="achievement-badge-row">
                           <span className="badge-issuer">{item.issuer}</span>
                           <span className="badge-date">{item.date}</span>
@@ -117,8 +140,27 @@ const Projects = () => {
                       </div>
 
                       {/* BACK VIEW PANEL */}
-                      <div className="flip-card-back supabase-card achievement-item-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', justifyContent: 'space-between', padding: '1.25rem', boxSizing: 'border-box' }}>
-                        <div className="achievement-image-wrapper" style={{ width: '100%', height: '250px', backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                      <div 
+                        className="flip-card-back supabase-card achievement-item-card" 
+                        style={{ 
+                          display: 'flex', 
+                          flexDirection: 'column', 
+                          height: '100%', 
+                          width: '100%', 
+                          justifyContent: 'space-between', 
+                          padding: '1.25rem', 
+                          boxSizing: 'border-box',
+                          backfaceVisibility: 'hidden',
+                          WebkitBackfaceVisibility: 'hidden',
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          transform: 'rotateY(180deg)', // Keeps back content right-side-up
+                          zIndex: isFlipped ? 2 : 1, // Pulls panel to front when active
+                          visibility: isFlipped ? 'visible' : 'hidden' // Force renders canvas only when needed
+                        }}
+                      >
+                        <div className="achievement-image-wrapper" style={{ width: '100%', height: '230px', backgroundColor: 'rgba(0, 0, 0, 0.6)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                           <img 
                             src={item.image}
                             alt={item.title} 
