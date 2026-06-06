@@ -71,10 +71,8 @@ const Projects = () => {
   ];
 
   return (
-    /* 💡 CHANGED: Main section wraps color tokens uniformly */
     <section id="projects" className="projects-section" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
       
-      {/* 💡 CHANGED: Inside the style tag, explicit theme hooks are mapped to card items */}
       <style>{`
         .forced-perspective-container {
           perspective: 1200px !important;
@@ -132,6 +130,22 @@ const Projects = () => {
           color: var(--text-secondary) !important;
           font-size: 0.75rem;
         }
+
+        /* 💡 FIXED: Base transition for image element to animate scale shifts smoothly */
+        .achievement-card-img {
+          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+          transform: scale(1);
+        }
+
+        /* 💡 FIXED: Stage 1 - Base zoom applied automatically upon finishing the flip animation */
+        .forced-card-inner.is-flipped-active .achievement-card-img {
+          transform: scale(1.02);
+        }
+
+        /* 💡 FIXED: Stage 2 - Focus micro-interaction zoom when hovered after being flipped */
+        .forced-perspective-container:hover .forced-card-inner.is-flipped-active .achievement-card-img {
+          transform: scale(1.08) !important;
+        }
       `}</style>
 
       <div className="section-header-block" style={{ padding: '40px 40px 10px 40px', maxWidth: '1350px', margin: '0 auto' }}>
@@ -140,7 +154,6 @@ const Projects = () => {
       </div>
 
       <div className="portfolio-tab-row" style={{ maxWidth: '1350px', margin: '0 auto', padding: '0 40px 20px 40px' }}>
-        {/* Note: Your tab-btn active states will now automatically pair over the main theme colors */}
         <button className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`} onClick={() => setActiveTab('all')}>Show All</button>
         <button className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`} onClick={() => setActiveTab('projects')}>Projects ({projects ? projects.length : 0})</button>
         <button className={`tab-btn ${activeTab === 'achievements' ? 'active' : ''}`} onClick={() => setActiveTab('achievements')}>Achievements ({achievements.length})</button>
@@ -203,7 +216,6 @@ const Projects = () => {
 
                       {/* BACK VIEW PANEL */}
                       <div className="forced-face-back flip-card-back" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '20px' }}>
-                        {/* 💡 CHANGED: Background box is set to dark theme asset containment natively */}
                         <div className="achievement-image-wrapper" style={{ width: '100%', height: '260px', backgroundColor: '#09090b', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
                           <img 
                             src={item.image}
