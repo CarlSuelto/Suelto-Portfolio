@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// Import your central Supabase client instance
 import { supabase } from '../services/supabaseClient'; 
 
 const Contact = () => {
@@ -7,7 +6,7 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   
-  /* --- Upgraded UI Interaction States --- */
+
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,8 +24,6 @@ const Contact = () => {
     setLoading(true);
     
     try {
-      /* 🚀 CONNECTED: Inserting the form payload straight into your database */
-      // Using exact database column keys (full_name and email_address)
       const { error } = await supabase
         .from('contact_messages')
         .insert([
@@ -39,7 +36,7 @@ const Contact = () => {
 
       if (error) throw error;
 
-      // Transmission successful: reset states
+  
       setSubmitted(true);
       setName('');
       setEmail('');
@@ -61,7 +58,6 @@ const Contact = () => {
 
       <div className="contact-container-centered">
         {submitted ? (
-          /* Supabase Green Alert Banner Notification Box */
           <div className="supabase-success-banner">
             <div className="banner-icon-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="20" height="20">
