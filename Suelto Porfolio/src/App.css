@@ -657,8 +657,10 @@ code {
 /* ==========================================================================
    8.1 SUCCESS BANNER HIGH-CONTRAST THEME CORRECTION
    ========================================================================== */
+/* ==========================================================================
+   SUCCESS BANNER HIGH-CONTRAST THEME CORRECTION
+   ========================================================================== */
 .supabase-success-banner {
-  /* Dynamic container background using your theme variables */
   background-color: var(--badge-bg) !important;
   border-color: var(--brand-emerald) !important;
 }
@@ -673,17 +675,20 @@ code {
   color: var(--text-secondary) !important;
 }
 
-/* Fix right-side link button contrast and alignment */
+/* Fix right-side link button contrast and alignment without the solid highlight background */
 .supabase-success-banner .banner-reset-btn {
   color: var(--brand-emerald) !important;
   border-color: var(--brand-emerald) !important;
   background: transparent !important;
   font-weight: 600;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+/* Subtle, clean hover effect instead of a background color fill */
 .supabase-success-banner .banner-reset-btn:hover {
-  background-color: var(--brand-emerald) !important;
-  color: #ffffff !important;
+  background: transparent !important;
+  opacity: 0.8;
+  transform: translateY(-1px);
 }
 
 .contact-section {
