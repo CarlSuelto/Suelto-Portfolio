@@ -74,6 +74,36 @@ const Projects = () => {
     <section id="projects" className="projects-section" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
       
       <style>{`
+        /* 💡 FIXED: Filter Tab Layout & Hover Fixes for Visibility */
+        .portfolio-tab-row {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+        .tab-btn {
+          background-color: var(--bg-card);
+          color: var(--text-primary);
+          border: 1px solid var(--border-subtle);
+          padding: 8px 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 0.9rem;
+          transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .tab-btn.active {
+          background-color: rgba(62, 207, 142, 0.1) !important;
+          color: var(--brand-emerald) !important;
+          border-color: var(--brand-emerald) !important;
+        }
+        /* High contrast dynamic hover state for unselected buttons */
+        .tab-btn:not(.active):hover {
+          background-color: var(--brand-emerald) !important;
+          color: #ffffff !important;
+          border-color: var(--brand-emerald) !important;
+        }
+
+        /* 3D Perspective Card Layout System */
         .forced-perspective-container {
           perspective: 1200px !important;
           height: 380px;
@@ -131,18 +161,13 @@ const Projects = () => {
           font-size: 0.75rem;
         }
 
-        /* 💡 FIXED: Base transition for image element to animate scale shifts smoothly */
         .achievement-card-img {
           transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
           transform: scale(1);
         }
-
-        /* 💡 FIXED: Stage 1 - Base zoom applied automatically upon finishing the flip animation */
         .forced-card-inner.is-flipped-active .achievement-card-img {
           transform: scale(1.02);
         }
-
-        /* 💡 FIXED: Stage 2 - Focus micro-interaction zoom when hovered after being flipped */
         .forced-perspective-container:hover .forced-card-inner.is-flipped-active .achievement-card-img {
           transform: scale(1.08) !important;
         }
@@ -168,7 +193,7 @@ const Projects = () => {
           <div className="projects-sub-column" style={{ marginBottom: '32px' }}>
             {activeTab === 'all' && <h3 style={{ color: 'var(--text-primary)', marginBottom: '16px' }}>Featured Builds</h3>}
             <div className="projects-grid">
-              {projects.map((project) => (
+              {projects && projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>

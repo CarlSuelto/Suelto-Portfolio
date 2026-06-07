@@ -90,7 +90,7 @@ const Contact = () => {
                 </svg>
               </div>
               <div className="banner-text-content">
-                <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Loud and clear!</h4>
+                <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Message acquired!</h4>
                 <p style={{ margin: '4px 0 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Entry written successfully. Connection established!</p>
               </div>
             </div>
@@ -116,11 +116,11 @@ const Contact = () => {
               )}
 
               <div className="form-group">
-                <label htmlFor="form-name">Full Name</label>
+                <label htmlFor="form-name"> Full Name *</label>
                 <input 
                   type="text"
                   id="form-name"
-                  placeholder="Carl Vincent" 
+                  placeholder="Firstname, MI., Lastname" 
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={loading}
@@ -129,7 +129,7 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="form-email">Email Address</label>
+                <label htmlFor="form-email">Email Address * </label>
                 <input 
                   type="email" 
                   id="form-email"
@@ -142,10 +142,10 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="form-msg">Message</label>
+                <label htmlFor="form-msg">Your Message *</label>
                 <textarea 
                   id="form-msg"
-                  placeholder="Describe your project requirements, goals, or core objectives..." 
+                  placeholder="Describe what you think, your project requirements, goals, or core objectives..." 
                   rows="5" 
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -187,7 +187,7 @@ const Contact = () => {
                   if (!loading) e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
-                <span>{loading ? 'Writing to database...' : 'Dispatch Message'}</span>
+                <span>{loading ? 'Taking inputs to database...' : 'Acquire Message'}</span>
                 {!loading && (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" width="16" height="16">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />

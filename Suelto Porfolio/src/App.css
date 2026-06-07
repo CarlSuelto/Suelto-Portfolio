@@ -4,7 +4,7 @@
 html {
   scroll-behavior: smooth;
 }
-   :root {
+:root {
   --bg: #121214;                  /* Deep charcoal dashboard background */
   --bg-secondary: #1a1a1e;        /* Lighter container background */
   --bg-dots: #222226;             /* Grid dot texture accent color */
@@ -25,6 +25,38 @@ html {
 
   font: 16px/1.6 var(--sans);
   color-scheme: dark;
+
+  /* --- Core Theme Defaults --- */
+  --bg-main: #0c0c0e;
+  --bg-card: #16161a;
+  --bg-card-hover: #1e1e24;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(62, 207, 142, 0.15);
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  --brand-emerald: #3ecf8e;
+  --brand-emerald-hover: #34b279;
+  --badge-bg: rgba(62, 207, 142, 0.1);
+}
+
+/* Ultra-Sharp High-Contrast Light Theme Config */
+[data-theme='light'] {
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f5;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(62, 207, 142, 0.3);
+  
+  --text-primary: #1a1a1e;
+  --text-secondary: #4a4a52;
+  --text-muted: #70707c;
+  
+  --brand-emerald: #07b066; /* Deepened for flawless accessibility */
+  --brand-emerald-hover: #058f52;
+  --badge-bg: rgba(7, 176, 102, 0.12);
 }
 
 /* ==========================================================================
@@ -46,6 +78,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Global fluid shift handling across UI elements */
+body, div, section, h1, h2, h3, h4, p, span, a, button {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
@@ -58,7 +95,6 @@ section {
   min-height: 80vh;
 }
 
-/* Typography Extensions */
 h1, h2, h3, h4 {
   color: var(--text-h);
   font-weight: 600;
@@ -78,7 +114,6 @@ code {
   border-radius: 4px;
   color: var(--accent);
 }
-
 
 /* ==========================================================================
    3. NAVIGATION BAR (Fixed Studio Layout with Hover Effects)
@@ -160,11 +195,42 @@ code {
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  .hire-me-nav-btn {
-    display: none; /* Safely hides button inside responsive mobile dropdown layouts if needed */
-  }
+/* --- Jumping Letters Layout Container --- */
+.nav-logo.jumping-letters {
+  display: flex;
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--accent); 
+  text-decoration: none;
+  cursor: default;
 }
+
+.nav-logo.jumping-letters span {
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.nav-logo.jumping-letters:hover span {
+  color: var(--text-h); 
+  animation: letter-leap 0.35s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.nav-logo.jumping-letters span:nth-child(1) { animation-delay: 0.0s; }
+.nav-logo.jumping-letters span:nth-child(2) { animation-delay: 0.08s; }
+.nav-logo.jumping-letters span:nth-child(3) { animation-delay: 0.16s; }
+.nav-logo.jumping-letters span:nth-child(4) { animation-delay: 0.24s; }
+
+.nav-logo.jumping-letters span.dot {
+  color: var(--accent);
+  animation: none !important;
+  transition: text-shadow 0.3s ease;
+}
+
+.nav-logo.jumping-letters:hover span.dot {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+}
+
 /* ==========================================================================
    4. HERO / HOMEPAGE SPLIT ARCHITECTURE
    ========================================================================== */
@@ -185,7 +251,6 @@ code {
   width: 100%;
 }
 
-/* --- Left Column Elements --- */
 .hero-left-content {
   display: flex;
   flex-direction: column;
@@ -226,7 +291,6 @@ code {
   animation: blink 1s infinite;
 }
 
-/* --- Right Column: The Circular Radar Artwork Component --- */
 .hero-right-image {
   display: flex;
   justify-content: center;
@@ -274,7 +338,6 @@ code {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Micro-Interaction Hover Triggers --- */
 .profile-card-wrapper.circular-variant:hover {
   transform: scale(1.02) translateY(-4px);
   border-color: var(--accent);
@@ -291,7 +354,6 @@ code {
   box-shadow: inset 0 0 20px rgba(62, 207, 142, 0.2);
 }
 
-/* --- Base Supabase Button Styles --- */
 .btn-primary-supabase {
   display: inline-block;
   background: #24b47e;
@@ -326,29 +388,33 @@ code {
   margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--border);
   padding-bottom: 16px;
+  flex-wrap: wrap;
 }
 
+/* 💡 FIXED: Unified High-Contrast Component Filter Button States */
 .tab-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   padding: 8px 18px;
   border-radius: 6px;
   font-family: var(--mono);
   font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.tab-btn:hover {
-  border-color: rgba(62, 207, 142, 0.4);
-  color: var(--text-h);
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .tab-btn.active {
-  background: rgba(62, 207, 142, 0.1);
-  border-color: var(--accent);
-  color: var(--accent);
+  background-color: rgba(62, 207, 142, 0.1) !important;
+  color: var(--brand-emerald) !important;
+  border-color: var(--brand-emerald) !important;
+}
+
+.tab-btn:not(.active):hover {
+  background-color: var(--brand-emerald) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-emerald) !important;
 }
 
 .portfolio-master-layout-grid {
@@ -361,88 +427,140 @@ code {
 .projects-sub-column h3, .achievements-sub-column h3 {
   font-size: 1.25rem;
   font-family: var(--sans);
-  color: var(--text-h);
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--brand-emerald);
   padding-left: 10px;
 }
 
-.achievements-box-grid {
+/* ==========================================================================
+   6. SOLID 3D FLIP CARD DECK SYSTEM
+   ========================================================================== */
+.custom-3d-deck {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 
-.achievement-item-card {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 200px;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+.forced-perspective-container {
+  perspective: 1200px !important;
+  height: 380px;
 }
 
-.achievement-item-card h4 {
-  font-size: 1.15rem;
-  color: var(--text-h);
+.forced-card-inner {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform-style: preserve-3d !important;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.forced-card-inner.is-flipped-active {
+  transform: rotateY(180deg) !important;
+}
+
+.forced-face-front, .forced-face-back {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  box-sizing: border-box !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 8px;
+}
+
+.forced-face-front {
+  z-index: 2 !important;
+  transform: rotateY(0deg) !important;
+}
+
+.forced-face-back {
+  transform: rotateY(180deg) !important;
+  z-index: 1 !important;
+  background-color: #0c0c0d !important;
+  border: 1px solid rgba(62, 207, 142, 0.4) !important;
+  padding: 1.25rem !important;
+}
+
+.front-card-body-content h4 {
+  color: var(--text-primary) !important;
   margin: 12px 0 8px 0;
   line-height: 1.3;
 }
 
-.achievement-item-card p {
+.front-card-body-content p {
+  color: var(--text-secondary) !important;
   font-size: 0.9rem;
-  color: var(--text);
   line-height: 1.5;
 }
 
-.achievement-badge-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .badge-issuer {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--bg-main) !important;
+  color: var(--brand-emerald) !important;
   padding: 4px 10px;
   border-radius: 4px;
-  color: var(--text-h);
-  border: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
 }
 
 .badge-date {
+  color: var(--text-secondary) !important;
   font-size: 0.8rem;
-  color: var(--text);
   font-family: var(--mono);
 }
 
 .achievement-status-footer {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 16px;
+  gap: 8px;
   font-size: 0.75rem;
   font-family: var(--mono);
-  color: var(--accent);
-  opacity: 0.8;
+  color: var(--brand-emerald);
+  margin-top: 12px;
 }
 
-.verified-icon {
-  width: 14px;
-  height: 14px;
+/* 🔴 THE CONTAINER HEIGHT & IMAGE DYNAMICS FIXES */
+.achievement-image-wrapper {
+  width: 100%;
+  height: 80%; 
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 16px 0;
 }
 
-.achievement-item-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
+.achievement-card-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain !important; 
+  display: block !important;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transform: scale(1);
+}
+
+/* 💡 POST-FLIP MICRO-INTERACTIONS AND PERSISTENT HOVER SCALE SYSTEM */
+.forced-card-inner.is-flipped-active .achievement-card-img {
+  transform: scale(1.02);
+}
+
+.forced-perspective-container:hover .forced-card-inner.is-flipped-active .achievement-card-img {
+  transform: scale(1.08) !important;
 }
 
 /* ==========================================================================
-   6. ABOUT ME & SOCIAL BENTO GRID BOXES
+   7. ABOUT ME & SOCIAL BENTO GRID BOXES
    ========================================================================== */
 .about-section {
   display: flex;
@@ -458,7 +576,7 @@ code {
 
 .section-subtitle {
   font-family: var(--mono);
-  color: var(--accent);
+  color: var(--brand-emerald);
   font-size: 0.95rem;
 }
 
@@ -533,8 +651,41 @@ code {
 }
 
 /* ==========================================================================
-   7. BACKEND INPUT FORMS & NOTIFICATION BANNERS
+   8. BACKEND INPUT FORMS & NOTIFICATION BANNERS
    ========================================================================== */
+
+/* ==========================================================================
+   8.1 SUCCESS BANNER HIGH-CONTRAST THEME CORRECTION
+   ========================================================================== */
+.supabase-success-banner {
+  /* Dynamic container background using your theme variables */
+  background-color: var(--badge-bg) !important;
+  border-color: var(--brand-emerald) !important;
+}
+
+/* Force high-contrast heading text inside the banner */
+.supabase-success-banner .banner-text-content h4 {
+  color: var(--text-primary) !important;
+}
+
+/* Force legible description text inside the banner */
+.supabase-success-banner .banner-text-content p {
+  color: var(--text-secondary) !important;
+}
+
+/* Fix right-side link button contrast and alignment */
+.supabase-success-banner .banner-reset-btn {
+  color: var(--brand-emerald) !important;
+  border-color: var(--brand-emerald) !important;
+  background: transparent !important;
+  font-weight: 600;
+}
+
+.supabase-success-banner .banner-reset-btn:hover {
+  background-color: var(--brand-emerald) !important;
+  color: #ffffff !important;
+}
+
 .contact-section {
   padding: 80px 10%;
   text-align: left;
@@ -602,7 +753,6 @@ code {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  cursor: pointer;
   padding: 12px 24px;
   font-weight: 500;
   width: 100%;
@@ -660,159 +810,8 @@ code {
 }
 
 /* ==========================================================================
-   8. CONSOLIDATED ANIMATION MECHANISMS & RESPONSIVE BREAKPOINTS
+   9. INFINITE TECH ECOSYSTEM CAROUSEL
    ========================================================================== */
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-@media (max-width: 968px) {
-  .hero-split-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 3rem;
-  }
-  .hero-left-content {
-    text-align: center;
-    order: 2;
-  }
-  .hero-right-image {
-    order: 1;
-  }
-  .hero-title {
-    font-size: 2.6rem;
-  }
-  .profile-image-container.circular-mask {
-    width: 260px;
-    height: 260px;
-  }
-}
-
-@media (max-width: 768px) {
-  section { 
-    padding: 6rem 5% 2rem 5%; 
-  }
-  .navbar { 
-    padding: 1rem 5%; 
-  }
-  .nav-links { 
-    display: none;              /* Simple responsive presentation collapse */
-  }
-  .hero-title {
-    font-size: 38px;
-    letter-spacing: -1px;
-  }
-  .hero-subtitle {
-    font-size: 20px;
-  }
-  .hero-section-fullscreen {
-    padding: 0 5%;
-  }
-  .contact-section {
-    padding: 60px 5%;
-  }
-  .contact-form-card {
-    padding: 20px;
-  }
-  .supabase-success-banner {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .banner-reset-btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-/* Container box that clips and houses the certificate preview image */
-.achievement-image-wrapper {
-  width: 100%;
-  height: 160px;                 /* Fixed height for the image banner block */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #1a1a1e;     /* Fallback dark tint */
-  border-bottom: 1px solid var(--border); /* Clean separator line under the picture */
-  
-  /* Crucial changes to make the image fit edge-to-edge: */
-  margin: 16px 0;                /* Vertical spacing inside the card */
-  overflow: hidden;              /* Clips the image edges cleanly at the border-radius */
-  border-radius: 6px;            /* Matches the rounded corners of your UI layout */
-}
-
-/* Forces your local PNG asset to completely fill out the container dimensions */
-.achievement-card-img {
-  width: 100%;
-  height: 100%;
-  
-  /* Crucial change: 'cover' scales the image up so there are zero black bars or gaps */
-  object-fit: cover;             
-  object-position: center top;   /* Ensures the top/center of the certificate is favored when cropped */
-  padding: 0;                    /* Removed padding so it stretches edge-to-edge */
-  
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Optional: Smooth hover micro-interaction */
-.achievement-item-card:hover .achievement-card-img {
-  transform: scale(1.05);        /* Slight lens zoom when hovering over the card wrapper */
-}
------------------------------------------------------------------------
-/* --- Jumping Letters Layout Container --- */
-.nav-logo.jumping-letters {
-  display: flex;
-  font-size: 1.3rem; 
-  font-weight: 700; 
-  color: var(--accent); 
-  text-decoration: none;
-  cursor: default;
-}
-
-/* Base style for every letter element */
-.nav-logo.jumping-letters span {
-  display: inline-block;
-  transition: color 0.2s ease;
-}
-
-/* --- Trigger Continuous Animation Wave on Hover --- */
-.nav-logo.jumping-letters:hover span {
-  color: var(--text-h); /* Flash letters white as they leap */
-  
-  /* 🔄 UPDATED: Added 'infinite' for the loop and 'alternate' for smooth up-and-down motion */
-  animation: letter-leap 0.35s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-}
-
-/* Stagger the leap timing for each letter to create the infinite wave ripple */
-.nav-logo.jumping-letters span:nth-child(1) { animation-delay: 0.0s; }
-.nav-logo.jumping-letters span:nth-child(2) { animation-delay: 0.08s; }
-.nav-logo.jumping-letters span:nth-child(3) { animation-delay: 0.16s; }
-.nav-logo.jumping-letters span:nth-child(4) { animation-delay: 0.24s; }
-
-/* Keep the green dot grounded, glowing, and stationary */
-.nav-logo.jumping-letters span.dot {
-  color: var(--accent);
-  animation: none !important; /* Excludes the dot from jumping */
-  transition: text-shadow 0.3s ease;
-}
-
-.nav-logo.jumping-letters:hover span.dot {
-  color: var(--accent);
-  text-shadow: 0 0 10px var(--accent);
-}
-
-/* --- The Infinite Leap Physics Animation --- */
-@keyframes letter-leap {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-7px); /* Shoots upward and cleanly reverses because of 'alternate' */
-  }
-}
-
-/* ==========================================================================
-   INFINITE TECH ECOSYSTEM CAROUSEL
-   ========================================================================== */
-
 .carousel-section-card {
   margin: 1.5rem 0;
   padding: 1.5rem !important;
@@ -820,34 +819,27 @@ code {
   position: relative;
 }
 
-/* Container locking the carousel view width */
 .tech-carousel-viewport {
   width: 100%;
   overflow: hidden;
   position: relative;
   margin-top: 1.2rem;
   padding: 0.5rem 0;
-  
-  /* Creates elegant dashboard fadeout masks along the left and right borders */
   mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
 }
 
-/* Continuous moving horizontal layout line */
 .tech-carousel-track {
   display: flex;
   width: max-content;
   gap: 1.5rem;
-  /* Triggers loop animation logic infinitely */
   animation: scroll-carousel 25s linear infinite;
 }
 
-/* Pause the looping movement when a user hovers over any badge entry */
 .tech-carousel-viewport:hover .tech-carousel-track {
   animation-play-state: paused;
 }
 
-/* Individual Tech Items Capsule Design */
 .tech-badge {
   background: #121214;
   border: 1px solid var(--border);
@@ -867,31 +859,17 @@ code {
   transition: color 0.25s ease;
 }
 
-/* Hover effect matching Supabase styling */
 .tech-badge:hover {
   border-color: rgba(62, 207, 142, 0.4);
   background: #16161a;
 }
 
 .tech-badge:hover code {
-  color: var(--accent); /* Shifts badge text to emerald green */
+  color: var(--accent);
 }
 
-/* --- Smooth Infinite Loop Physics Translation Keyframes --- */
-@keyframes scroll-carousel {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Shifts exactly half the track length (one map iteration) before structural looping kicks in */
-    transform: translateX(-50%); 
-  }
-}
-
-/* Individual Color-Aware Tech Items Capsule */
 .tech-badge.color-aware {
   background: rgba(18, 18, 20, 0.7);
-  /* Uses the custom variable for the border, defaulting to your standard frame color if not found */
   border: 1px solid var(--badge-glow, var(--border));
   padding: 10px 20px;
   border-radius: 6px;
@@ -904,14 +882,12 @@ code {
 }
 
 .tech-badge.color-aware code {
-  /* Sets code text color directly to the brand asset code color variable */
   color: var(--badge-text, var(--text));
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
 
-/* Interaction Upgrade: The badge blooms with glow intensity on hover */
 .tech-badge.color-aware:hover {
   background: var(--badge-glow);
   border-color: var(--badge-text);
@@ -919,22 +895,19 @@ code {
   box-shadow: 0 4px 12px var(--badge-glow);
 }
 
-/* ================================================================================= */
-/* Triggers zoom on the image inside the hobby container frame */
 .hobby-image-card:hover .hobby-card-img {
   transform: scale(1.08);
 }
 
 /* ==========================================================================
-   MINIMALIST SUPABASE-THEMED FOOTER STYLES
+   10. MINIMALIST SUPABASE-THEMED FOOTER STYLES
    ========================================================================== */
 .supabase-footer {
-  background-color: #0c0c0d; /* Deep dashboard onyx backplane */
+  background-color: #0c0c0d;
   border-top: 1px solid var(--border);
   padding: 4rem 2rem 2rem 2rem;
   margin-top: 6rem;
   color: var(--text);
-  font-family: var(--font-sans, inherit);
 }
 
 .footer-container-centered {
@@ -949,13 +922,6 @@ code {
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .footer-top-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
 .footer-brand-column .footer-logo {
   font-size: 1.4rem;
   font-weight: 700;
@@ -965,7 +931,7 @@ code {
 }
 
 .footer-brand-column .footer-logo span {
-  color: var(--accent); /* Emerald green dot accent */
+  color: var(--accent);
 }
 
 .footer-tagline {
@@ -976,7 +942,6 @@ code {
   margin-bottom: 1.5rem;
 }
 
-/* Active Monitoring Console Pill Indicator */
 .system-status-pill {
   display: inline-flex;
   align-items: center;
@@ -1032,7 +997,6 @@ code {
   color: #fff;
 }
 
-/* Metadata lists format adjustments */
 .meta-info-item {
   color: rgba(255, 255, 255, 0.7);
 }
@@ -1071,162 +1035,86 @@ code {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* ==========================================================================
+   11. CONSOLIDATED ANIMATION MECHANISMS & RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes letter-leap {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+@keyframes scroll-carousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @keyframes footer-ping {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 
-/*DO NOT TOUCH ANYTHING ABOVE THIS LINE FOR SAFETY */
-/* ==========================================================================
-   SOLID 3D FLIP CARD LAYOUT (IMPROVED IMAGE VISIBILITY)
-   ========================================================================== */
-.custom-3d-deck {
-  perspective: 1000px;
+@media (max-width: 968px) {
+  .hero-split-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+  .hero-left-content {
+    text-align: center;
+    order: 2;
+  }
+  .hero-right-image {
+    order: 1;
+  }
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  .profile-image-container.circular-mask {
+    width: 260px;
+    height: 260px;
+  }
 }
 
-.flip-card-container {
-  background-color: transparent;
-  height: 380px; 
-  cursor: pointer;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-}
-
-/* Rotate container when toggled active */
-.flip-card-container.is-flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Enforce hardware rendering and prevent content bleeds */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden !important;
-  backface-visibility: hidden !important;
-  margin: 0 !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
-/* FRONT PANEL */
-.flip-card-front {
-  z-index: 2;
-  transform: rotateY(0deg);
-}
-
-/* BACK PANEL (Where your images live) */
-.flip-card-back {
-  z-index: 1;
-  transform: rotateY(180deg);
-  background-color: #0c0c0d !important;
-  border: 1px solid rgba(62, 207, 142, 0.4) !important;
-  padding: 1.25rem !important;
-}
-
-/* 🔴 THE FIX: Absolute structural height for your image layout container */
-.achievement-image-wrapper {
-  width: 100%;
-  height: 80%; /* Forces the wrapper to stay wide open */
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* 🔴 THE FIX: Prevent browser scaling from compressing the image to 0px */
-.achievement-card-img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain !important; /* Retains original certification proportions */
-  display: block !important;
-}
-/* ==========================================================================
-   THEME VARIABLE CONFIGURATION
-   ========================================================================== */
-
-/* Default: Sleek Dark Supabase Emerald Aesthetic */
-:root {
-  --bg-main: #0c0c0e;
-  --bg-card: #16161a;
-  --bg-card-hover: #1e1e24;
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-accent: rgba(62, 207, 142, 0.15);
-  
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  
-  --brand-emerald: #3ecf8e;
-  --brand-emerald-hover: #34b279;
-  --badge-bg: rgba(62, 207, 142, 0.1);
-}
-
-/* Ultra-Sharp High-Contrast Light Theme */
-[data-theme='light'] {
-  --bg-main: #f8f9fa;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f3f5;
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-accent: rgba(62, 207, 142, 0.3);
-  
-  --text-primary: #1a1a1e;
-  --text-secondary: #4a4a52;
-  --text-muted: #70707c;
-  
-  --brand-emerald: #07b066; /* Deepened slightly for perfect readability on light backgrounds */
-  --brand-emerald-hover: #058f52;
-  --badge-bg: rgba(7, 176, 102, 0.12);
-}
-
-/* Global smooth transition override so theme shifts look fluid */
-body, div, section, h1, h2, h3, h4, p, span, a, button {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 1. Prevent the card from clipping the overall card flip rotation, 
-   but make sure the document element has its own masking bounds */
-.certificate-view-container {
-  overflow: hidden;
-  border-radius: 8px;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 2. Configure the underlying image transition properties */
-.certificate-view-container img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  /* Smooth transition handling both scale states flawlessly */
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: scale(1); /* Default state flat */
-}
-
-/* 3. Stage 1: The automatic base state right when the flip completes */
-.supabase-card.is-flipped .certificate-view-container img,
-.supabase-card.flipped-active .certificate-view-container img {
-  transform: scale(1.02); /* Very subtle pop forward after turning around */
-}
-
-/* 4. 💡 THE FIX: Stage 2 - Micro-interaction zoom effect when HOVERED *only* after it is flipped */
-.supabase-card.is-flipped .certificate-view-container:hover img,
-.supabase-card.flipped-active .certificate-view-container:hover img {
-  transform: scale(1.08) !important; /* Elegant focus zoom */
+@media (max-width: 768px) {
+  section { 
+    padding: 6rem 5% 2rem 5%; 
+  }
+  .navbar { 
+    padding: 1rem 5%; 
+  }
+  .nav-links { 
+    display: none; 
+  }
+  .hero-title {
+    font-size: 38px;
+    letter-spacing: -1px;
+  }
+  .hero-subtitle {
+    font-size: 20px;
+  }
+  .hero-section-fullscreen {
+    padding: 0 5%;
+  }
+  .contact-section {
+    padding: 60px 5%;
+  }
+  .contact-form-card {
+    padding: 20px;
+  }
+  .supabase-success-banner {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .banner-reset-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
