@@ -19,7 +19,8 @@ const Contact = () => {
       return;
     }
 
-    loading(true);
+    /* 💡 FIXED: Changed from loading(true) to the correct state modifier function */
+    setLoading(true); 
     
     try {
       const { error } = await supabase
@@ -47,10 +48,8 @@ const Contact = () => {
   };
 
   return (
-    /* 💡 CHANGED: Main section tracks root layout background variable */
     <section id="contact" className="contact-section" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-primary)', padding: '48px 40px', boxSizing: 'border-box', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
       
-      {/* 💡 CHANGED: Inline styles injected directly to target underlying form controls dynamically */}
       <style>{`
         .contact-form-card input, .contact-form-card textarea {
           background-color: var(--bg-main) !important;
@@ -107,7 +106,6 @@ const Contact = () => {
             </button>
           </div>
         ) : (
-          /* 💡 CHANGED: Card box base references tokens now */
           <div className="supabase-card contact-form-card" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-subtle)', padding: '32px', borderRadius: '8px' }}>
             <form onSubmit={handleSubmit} className="contact-form">
               
@@ -160,7 +158,34 @@ const Contact = () => {
                 type="submit" 
                 className={`btn-primary-supabase form-submit-btn ${loading ? 'loading' : ''}`}
                 disabled={loading}
-                style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', padding: '14px', borderRadius: '6px', cursor: loading ? 'not-allowed' : 'pointer', fontWeight: '500' }}
+                style={{ 
+                  width: '100%', 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  alignItems: 'center', 
+                  gap: '8px', 
+                  padding: '14px', 
+                  borderRadius: '6px', 
+                  cursor: loading ? 'not-allowed' : 'pointer', 
+                  fontWeight: '500',
+                  backgroundColor: loading ? 'var(--border-subtle)' : '#2b845b', // Solid brand emerald background matching image_0caf07.png
+                  color: '#ffffff',
+                  border: 'none',
+                  fontSize: '0.95rem',
+                  transition: 'background-color 0.2s ease, transform 0.1s ease'
+                }}
+                onMouseOver={(e) => {
+                  if (!loading) e.currentTarget.style.backgroundColor = '#226b49';
+                }}
+                onMouseOut={(e) => {
+                  if (!loading) e.currentTarget.style.backgroundColor = '#2b845b';
+                }}
+                onMouseDown={(e) => {
+                  if (!loading) e.currentTarget.style.transform = 'scale(0.98)';
+                }}
+                onMouseUp={(e) => {
+                  if (!loading) e.currentTarget.style.transform = 'scale(1)';
+                }}
               >
                 <span>{loading ? 'Writing to database...' : 'Dispatch Message'}</span>
                 {!loading && (
