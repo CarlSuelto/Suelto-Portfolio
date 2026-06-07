@@ -226,7 +226,12 @@ const About = () => {
 
       <div className="about-header" style={{ marginBottom: '4px' }}>
         <h2>About Me</h2>
-        <p className="section-subtitle">DIT Student & Web Developer</p>
+        <p className="section-subtitle"> A 3rd-year Diploma in Information Technology Student in Asian College of Science and Technology. 
+          I am also knowledgable in hardware and networking with the Computer Systems Servicing CSS NC-II on my possession and also an 
+          Events Management Servicing NC-III holder. I am also knowledgeable in photo editing and design using Adobe Photoshop and all other 
+          Adobe Creative Suite applications, also familiar with video editing using some popular software specially CapCut while doing TikTok videos as well.
+          Explore more here in my online portfolio and see my work in action with all my works and achievements during my academic journey here in Asian 
+          College of Science and Technology.</p>
       </div>
 
       {/* Structured Panels */}
